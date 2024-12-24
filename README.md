@@ -1,4 +1,4 @@
-# devup-eslint-plugin
+# eslint-plugin-devup
 
 `devup`은 데브파이브에서 사용되는 더 빠르고 더 정확한 소프트웨어 개발을 위한 시스템입니다.
 
@@ -13,7 +13,7 @@
 ## Installation
 
 ```bash
-pnpm install --save-dev devup-eslint-plugin
+pnpm install --save-dev eslint-plugin-devup
 ```
 
 ## Test
