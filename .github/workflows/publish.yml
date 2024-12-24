@@ -31,7 +31,7 @@ jobs:
           pnpm lint
           pnpm test
       - run: | 
-          pnpm publish --access=public
+          npm publish --access=public
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
