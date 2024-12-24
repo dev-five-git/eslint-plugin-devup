@@ -1,0 +1,56 @@
+{
+  "name": "@devup/eslint-plugin",
+  "version": "1.0.26",
+  "description": "eslint plugin for devup",
+  "main": "dist/index.cjs",
+  "type": "module",
+  "scripts": {
+    "test": "vitest run --coverage",
+    "test:s": "vitest run -u",
+    "lint": "eslint",
+    "build": "tsc && vite build",
+    "changeset": "changeset"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "eslint"
+  ],
+  "author": "devfive",
+  "license": "ISC",
+  "dependencies": {
+    "@eslint/js": "^9.17",
+    "@tanstack/eslint-plugin-query": "^5",
+    "eslint": "^9.17",
+    "eslint-config-prettier": "^9",
+    "eslint-plugin-prettier": "^5",
+    "eslint-plugin-react": "^7",
+    "eslint-plugin-react-hooks": "^5",
+    "eslint-plugin-simple-import-sort": "^12",
+    "eslint-plugin-unused-imports": "^4",
+    "prettier": "^3",
+    "typescript-eslint": "^8.18"
+  },
+  "peerDependencies": {
+    "eslint": "*"
+  },
+  "devDependencies": {
+    "@types/eslint": "^9.6",
+    "@types/eslint__js": "^8.42",
+    "@typescript-eslint/rule-tester": "^8.18",
+    "@vitest/coverage-v8": "2.1.8",
+    "eslint-plugin-eslint-plugin": "^6.4.0",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.5",
+    "vite-plugin-dts": "^4.4.0",
+    "vitest": "^2.1.8",
+    "@changesets/cli": "^2.27.11"
+  }
+}
