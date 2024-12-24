@@ -4,7 +4,10 @@ on:
     branches:
       - main
 jobs:
-  build:
+  check:
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: true
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
