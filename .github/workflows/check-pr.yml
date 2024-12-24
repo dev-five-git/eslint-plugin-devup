@@ -23,6 +23,7 @@ jobs:
           version: 9
           run_install: false
       - run: pnpm i
-      - run: | 
+      - run: |
+          pnpm build
           pnpm lint
           pnpm test
