@@ -31,6 +31,9 @@ jobs:
           pnpm lint
           pnpm test
       - run: | 
+          cat << EOF > "$HOME/.npmrc"
+            //registry.npmjs.org/:_authToken=$NPM_TOKEN
+          EOF
           npm publish --access=public
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
