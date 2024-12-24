@@ -1,5 +1,11 @@
 # @devup/eslint-plugin
 
+## 2.0.0
+
+### Major Changes
+
+- 2a50bc4: Release as Open Source
+
 ## 1.0.26
 
 ### Patch Changes
