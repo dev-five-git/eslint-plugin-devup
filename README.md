@@ -16,9 +16,20 @@
 pnpm install --save-dev eslint-plugin-devup
 ```
 
+## Usage
+
+create `eslint.config.mjs` file in your project root.
+
+```js
+import { configs } from 'eslint-plugin-devup'
+
+export default configs.recommended
+```
+
 ## Test
 
-반드시 커버리지가 100%가 되어야 합니다.
+Coverage score must be 100%.
+
 
 ```bash
 pnpm test
