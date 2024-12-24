@@ -30,7 +30,9 @@ jobs:
           pnpm build
           pnpm lint
           pnpm test
-      - run: pnpm build
+      - run: | 
+          pnpm build
+          pnpm publish --access=public
       - name: Create Release Pull Request or Publish to npm
         id: changesets
         uses: changesets/action@v1
