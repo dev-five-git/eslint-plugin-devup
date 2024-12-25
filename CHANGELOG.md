@@ -1,5 +1,11 @@
 # @devup/eslint-plugin
 
+## 2.0.1
+
+### Patch Changes
+
+- 24008b3: Fix version
+
 ## 2.0.0
 
 ### Major Changes
