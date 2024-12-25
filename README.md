@@ -41,3 +41,7 @@ pnpm test
 - 룰을 추가하거나 수정할 때는 `README.md`에 룰에 대한 설명을 추가합니다.
 
 모든 의견과 기여를 환영합니다.
+
+## Join the Community
+
+[Discord](https://discord.gg/8zjcGc7cWh)
