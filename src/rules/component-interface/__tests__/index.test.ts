@@ -57,6 +57,46 @@ describe('component rule', () => {
           },
         ],
       },
+      {
+        code: 'function Hello({}){return <></>}\nfunction Hello2({}){return <></>}',
+        output:
+          'interface HelloProps{}\nfunction Hello({}:HelloProps){return <></>}\ninterface Hello2Props{}\nfunction Hello2({}:Hello2Props){return <></>}',
+        filename: 'src/components/hello.tsx',
+        errors: [
+          {
+            messageId:
+              'componentPropsShouldHaveTypeAnnotationWhenEmptyObjectPattern',
+          },
+          {
+            messageId:
+              'componentPropsShouldHaveTypeAnnotationWhenEmptyObjectPattern',
+          },
+        ],
+      },
+      {
+        code: 'function Hello({}){return <></>}\nfunction Hello2({}){return <></>}\nexport function Hello3({}){return <></>}\nexport default function Hello4({}){return <></>}',
+        output:
+          'interface HelloProps{}\nfunction Hello({}:HelloProps){return <></>}\ninterface Hello2Props{}\nfunction Hello2({}:Hello2Props){return <></>}\ninterface Hello3Props{}\nexport function Hello3({}:Hello3Props){return <></>}\ninterface Hello4Props{}\nexport default function Hello4({}:Hello4Props){return <></>}',
+        filename: 'src/components/hello.tsx',
+        errors: [
+          {
+            messageId:
+              'componentPropsShouldHaveTypeAnnotationWhenEmptyObjectPattern',
+          },
+          {
+            messageId:
+              'componentPropsShouldHaveTypeAnnotationWhenEmptyObjectPattern',
+          },
+          {
+            messageId:
+              'componentPropsShouldHaveTypeAnnotationWhenEmptyObjectPattern',
+          },
+          {
+            messageId:
+              'componentPropsShouldHaveTypeAnnotationWhenEmptyObjectPattern',
+          },
+        ],
+      },
     ],
   })
 })

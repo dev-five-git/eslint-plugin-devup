@@ -14196,8 +14196,6 @@ See https://tkdodo.eu/blog/react-query-fa-qs#2-the-queryclient-is-not-stable",
     "rules": {
       "@devup/app-page": "error",
       "@devup/component": "error",
-      "@devup/css-ts": "error",
-      "@devup/layout": "error",
       "@devup/rsc-api": "error",
       "@typescript-eslint/ban-ts-comment": "off",
       "@typescript-eslint/explicit-module-boundary-types": "off",

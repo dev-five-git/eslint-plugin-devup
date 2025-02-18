@@ -50,7 +50,7 @@ export const componentInterface = createRule({
                 fixer.insertTextAfter(node.params[0], `:${funcName}Props`),
                 // 1줄 전
                 fixer.insertTextBefore(
-                  node.parent ?? node,
+                  node.parent.type === 'Program' ? node : node.parent,
                   `interface ${funcName}Props{}\n`,
                 ),
               ]

@@ -124,11 +124,9 @@ export default [
             markers: ['/'],
           },
         ],
-        '@devup/layout': 'error',
         '@devup/rsc-api': 'error',
         '@devup/app-page': 'error',
         '@devup/component': 'error',
-        '@devup/css-ts': 'error',
         ...hooksPlugin.configs.recommended.rules,
         // Fix eslint 15 bug
         '@typescript-eslint/no-unused-expressions': [
