@@ -1,5 +1,11 @@
 # @devup/eslint-plugin
 
+## 2.0.3
+
+### Patch Changes
+
+- 9278242: Update recommended
+
 ## 2.0.2
 
 ### Patch Changes
