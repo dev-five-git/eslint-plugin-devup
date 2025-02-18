@@ -19,6 +19,10 @@ describe('component rule', () => {
         code: 'interface HelloProps{}\ninterface Hello1Props{}\nexport function Hello({}:HelloProps){return <></>}',
         filename: 'src/components/hello.tsx',
       },
+      {
+        code: '',
+        filename: 'src/components/hello.ts',
+      },
     ],
     invalid: [
       {
