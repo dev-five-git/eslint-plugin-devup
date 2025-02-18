@@ -214,18 +214,6 @@ describe('component rule', () => {
           },
         ],
       },
-      {
-        code: 'export function Hello({}){return <></>}',
-        output:
-          'interface HelloProps{}\nexport function Hello({}:HelloProps){return <></>}',
-        filename: 'src/components/hello.tsx',
-        errors: [
-          {
-            messageId:
-              'componentPropsShouldHaveTypeAnnotationWhenEmptyObjectPattern',
-          },
-        ],
-      },
     ],
   })
 })

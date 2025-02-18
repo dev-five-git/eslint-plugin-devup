@@ -9,7 +9,7 @@ import simpleImportSort from 'eslint-plugin-simple-import-sort'
 import unusedImports from 'eslint-plugin-unused-imports'
 import tseslint from 'typescript-eslint'
 
-import { appPage, component, cssTs, layout, rscApi } from '../rules'
+import { appPage, component, componentInterface, rscApi } from '../rules'
 
 export default [
   {
@@ -47,11 +47,10 @@ export default [
         'simple-import-sort': simpleImportSort,
         '@devup': {
           rules: {
-            layout,
             component,
             'rsc-api': rscApi,
             'app-page': appPage,
-            'css-ts': cssTs,
+            'component-interface': componentInterface,
           },
         },
       },

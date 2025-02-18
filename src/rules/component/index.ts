@@ -20,8 +20,6 @@ export const component = createRule({
         '컴포넌트 이름은 디렉토리명 혹은 파일명을 따라야 합니다.',
       componentFileShouldExportComponent:
         '컴포넌트 파일은 컴포넌트를 내보내야 합니다.',
-      componentPropsShouldHaveTypeAnnotationWhenEmptyObjectPattern:
-        '컴포넌트의 `props`가 비어있고 타입이 없을 경우 반드시 타입을 명시해야 합니다.',
     },
     type: 'problem',
     fixable: 'code',
@@ -34,7 +32,7 @@ export const component = createRule({
     const filename = context.physicalFilename
 
     if (
-      !/src[/\\](app[/\\](?!.*[\\/]?(page|layout|404)\.[jt]sx$)|components[/\\]).*\.[jt]sx$/.test(
+      !/(src[/\\])?(app[/\\](?!.*[\\/]?(page|layout|404)\.[jt]sx$)|components[/\\]).*\.[jt]sx$/.test(
         filename,
       ) ||
       /[\\/]utils[\\/]|[\\/](__)?tests?(__)?[\\/]|\.(test|css|stories)\.[jt]sx$/.test(
@@ -52,15 +50,8 @@ export const component = createRule({
     else targetComponentName = toPascal(targetComponentRegex[2])
     const exportFunc: TSESTree.Node[] = []
     let ok = false
-    let hasInterface = false
-    let requiredInterface = false
-    let targetFunction: TSESTree.FunctionDeclaration | null = null
 
     return {
-      TSInterfaceDeclaration(node) {
-        if (hasInterface) return
-        if (node.id.name === targetComponentName + 'Props') hasInterface = true
-      },
       ExportNamedDeclaration(namedExport) {
         if (ok) return
         if (namedExport.specifiers.length && isIndex) {
@@ -74,15 +65,6 @@ export const component = createRule({
           // export 아래기 때문에 반드시 id가 있습니다.
           if (targetComponentName === declaration.id!.name) {
             ok = true
-            if (
-              declaration.params.length === 1 &&
-              declaration.params[0].type === 'ObjectPattern' &&
-              declaration.params[0].properties.length === 0 &&
-              !declaration.params[0].typeAnnotation
-            ) {
-              requiredInterface = true
-              targetFunction = declaration
-            }
             return
           }
           exportFunc.push(declaration.id!)
@@ -103,26 +85,6 @@ export const component = createRule({
         }
       },
       'Program:exit'(program) {
-        if (requiredInterface && !hasInterface && targetFunction) {
-          const targetFunc = targetFunction
-          context.report({
-            node: targetFunc.params[0],
-            messageId:
-              'componentPropsShouldHaveTypeAnnotationWhenEmptyObjectPattern',
-            fix(fixer) {
-              return [
-                fixer.insertTextAfter(
-                  targetFunc.params[0],
-                  `:${targetComponentName}Props`,
-                ),
-                fixer.insertTextBefore(
-                  targetFunc.parent,
-                  `interface ${targetComponentName}Props{}\n`,
-                ),
-              ]
-            },
-          })
-        }
         if (ok) return
         if (exportFunc.length) {
           for (const exported of exportFunc) {
