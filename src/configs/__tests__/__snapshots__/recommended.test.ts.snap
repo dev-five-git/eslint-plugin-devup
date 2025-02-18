@@ -4169,6 +4169,7 @@ exports[`recommended > export recommended config 1`] = `
     },
   },
   {
+    "name": "eslint-plugin-prettier/recommended",
     "plugins": {
       "prettier": {
         "configs": {
@@ -4188,7 +4189,7 @@ exports[`recommended > export recommended config 1`] = `
         },
         "meta": {
           "name": "eslint-plugin-prettier",
-          "version": "5.2.1",
+          "version": "5.2.3",
         },
         "rules": {
           "prettier": {
@@ -4233,6 +4234,186 @@ exports[`recommended > export recommended config 1`] = `
     "rules": {
       "@babel/object-curly-spacing": "off",
       "@babel/semi": "off",
+      "@stylistic/array-bracket-newline": "off",
+      "@stylistic/array-bracket-spacing": "off",
+      "@stylistic/array-element-newline": "off",
+      "@stylistic/arrow-parens": "off",
+      "@stylistic/arrow-spacing": "off",
+      "@stylistic/block-spacing": "off",
+      "@stylistic/brace-style": "off",
+      "@stylistic/comma-dangle": "off",
+      "@stylistic/comma-spacing": "off",
+      "@stylistic/comma-style": "off",
+      "@stylistic/computed-property-spacing": "off",
+      "@stylistic/dot-location": "off",
+      "@stylistic/eol-last": "off",
+      "@stylistic/func-call-spacing": "off",
+      "@stylistic/function-call-argument-newline": "off",
+      "@stylistic/function-call-spacing": "off",
+      "@stylistic/function-paren-newline": "off",
+      "@stylistic/generator-star-spacing": "off",
+      "@stylistic/implicit-arrow-linebreak": "off",
+      "@stylistic/indent": "off",
+      "@stylistic/indent-binary-ops": "off",
+      "@stylistic/js/array-bracket-newline": "off",
+      "@stylistic/js/array-bracket-spacing": "off",
+      "@stylistic/js/array-element-newline": "off",
+      "@stylistic/js/arrow-parens": "off",
+      "@stylistic/js/arrow-spacing": "off",
+      "@stylistic/js/block-spacing": "off",
+      "@stylistic/js/brace-style": "off",
+      "@stylistic/js/comma-dangle": "off",
+      "@stylistic/js/comma-spacing": "off",
+      "@stylistic/js/comma-style": "off",
+      "@stylistic/js/computed-property-spacing": "off",
+      "@stylistic/js/dot-location": "off",
+      "@stylistic/js/eol-last": "off",
+      "@stylistic/js/func-call-spacing": "off",
+      "@stylistic/js/function-call-argument-newline": "off",
+      "@stylistic/js/function-call-spacing": "off",
+      "@stylistic/js/function-paren-newline": "off",
+      "@stylistic/js/generator-star-spacing": "off",
+      "@stylistic/js/implicit-arrow-linebreak": "off",
+      "@stylistic/js/indent": "off",
+      "@stylistic/js/jsx-quotes": "off",
+      "@stylistic/js/key-spacing": "off",
+      "@stylistic/js/keyword-spacing": "off",
+      "@stylistic/js/linebreak-style": "off",
+      "@stylistic/js/lines-around-comment": 0,
+      "@stylistic/js/max-len": 0,
+      "@stylistic/js/max-statements-per-line": "off",
+      "@stylistic/js/multiline-ternary": "off",
+      "@stylistic/js/new-parens": "off",
+      "@stylistic/js/newline-per-chained-call": "off",
+      "@stylistic/js/no-confusing-arrow": 0,
+      "@stylistic/js/no-extra-parens": "off",
+      "@stylistic/js/no-extra-semi": "off",
+      "@stylistic/js/no-floating-decimal": "off",
+      "@stylistic/js/no-mixed-operators": 0,
+      "@stylistic/js/no-mixed-spaces-and-tabs": "off",
+      "@stylistic/js/no-multi-spaces": "off",
+      "@stylistic/js/no-multiple-empty-lines": "off",
+      "@stylistic/js/no-tabs": 0,
+      "@stylistic/js/no-trailing-spaces": "off",
+      "@stylistic/js/no-whitespace-before-property": "off",
+      "@stylistic/js/nonblock-statement-body-position": "off",
+      "@stylistic/js/object-curly-newline": "off",
+      "@stylistic/js/object-curly-spacing": "off",
+      "@stylistic/js/object-property-newline": "off",
+      "@stylistic/js/one-var-declaration-per-line": "off",
+      "@stylistic/js/operator-linebreak": "off",
+      "@stylistic/js/padded-blocks": "off",
+      "@stylistic/js/quote-props": "off",
+      "@stylistic/js/quotes": 0,
+      "@stylistic/js/rest-spread-spacing": "off",
+      "@stylistic/js/semi": "off",
+      "@stylistic/js/semi-spacing": "off",
+      "@stylistic/js/semi-style": "off",
+      "@stylistic/js/space-before-blocks": "off",
+      "@stylistic/js/space-before-function-paren": "off",
+      "@stylistic/js/space-in-parens": "off",
+      "@stylistic/js/space-infix-ops": "off",
+      "@stylistic/js/space-unary-ops": "off",
+      "@stylistic/js/switch-colon-spacing": "off",
+      "@stylistic/js/template-curly-spacing": "off",
+      "@stylistic/js/template-tag-spacing": "off",
+      "@stylistic/js/wrap-iife": "off",
+      "@stylistic/js/wrap-regex": "off",
+      "@stylistic/js/yield-star-spacing": "off",
+      "@stylistic/jsx-child-element-spacing": "off",
+      "@stylistic/jsx-closing-bracket-location": "off",
+      "@stylistic/jsx-closing-tag-location": "off",
+      "@stylistic/jsx-curly-newline": "off",
+      "@stylistic/jsx-curly-spacing": "off",
+      "@stylistic/jsx-equals-spacing": "off",
+      "@stylistic/jsx-first-prop-new-line": "off",
+      "@stylistic/jsx-indent": "off",
+      "@stylistic/jsx-indent-props": "off",
+      "@stylistic/jsx-max-props-per-line": "off",
+      "@stylistic/jsx-newline": "off",
+      "@stylistic/jsx-one-expression-per-line": "off",
+      "@stylistic/jsx-props-no-multi-spaces": "off",
+      "@stylistic/jsx-quotes": "off",
+      "@stylistic/jsx-tag-spacing": "off",
+      "@stylistic/jsx-wrap-multilines": "off",
+      "@stylistic/jsx/jsx-child-element-spacing": "off",
+      "@stylistic/jsx/jsx-closing-bracket-location": "off",
+      "@stylistic/jsx/jsx-closing-tag-location": "off",
+      "@stylistic/jsx/jsx-curly-newline": "off",
+      "@stylistic/jsx/jsx-curly-spacing": "off",
+      "@stylistic/jsx/jsx-equals-spacing": "off",
+      "@stylistic/jsx/jsx-first-prop-new-line": "off",
+      "@stylistic/jsx/jsx-indent": "off",
+      "@stylistic/jsx/jsx-indent-props": "off",
+      "@stylistic/jsx/jsx-max-props-per-line": "off",
+      "@stylistic/key-spacing": "off",
+      "@stylistic/keyword-spacing": "off",
+      "@stylistic/linebreak-style": "off",
+      "@stylistic/lines-around-comment": 0,
+      "@stylistic/max-len": 0,
+      "@stylistic/max-statements-per-line": "off",
+      "@stylistic/member-delimiter-style": "off",
+      "@stylistic/multiline-ternary": "off",
+      "@stylistic/new-parens": "off",
+      "@stylistic/newline-per-chained-call": "off",
+      "@stylistic/no-confusing-arrow": 0,
+      "@stylistic/no-extra-parens": "off",
+      "@stylistic/no-extra-semi": "off",
+      "@stylistic/no-floating-decimal": "off",
+      "@stylistic/no-mixed-operators": 0,
+      "@stylistic/no-mixed-spaces-and-tabs": "off",
+      "@stylistic/no-multi-spaces": "off",
+      "@stylistic/no-multiple-empty-lines": "off",
+      "@stylistic/no-tabs": 0,
+      "@stylistic/no-trailing-spaces": "off",
+      "@stylistic/no-whitespace-before-property": "off",
+      "@stylistic/nonblock-statement-body-position": "off",
+      "@stylistic/object-curly-newline": "off",
+      "@stylistic/object-curly-spacing": "off",
+      "@stylistic/object-property-newline": "off",
+      "@stylistic/one-var-declaration-per-line": "off",
+      "@stylistic/operator-linebreak": "off",
+      "@stylistic/padded-blocks": "off",
+      "@stylistic/quote-props": "off",
+      "@stylistic/quotes": 0,
+      "@stylistic/rest-spread-spacing": "off",
+      "@stylistic/semi": "off",
+      "@stylistic/semi-spacing": "off",
+      "@stylistic/semi-style": "off",
+      "@stylistic/space-before-blocks": "off",
+      "@stylistic/space-before-function-paren": "off",
+      "@stylistic/space-in-parens": "off",
+      "@stylistic/space-infix-ops": "off",
+      "@stylistic/space-unary-ops": "off",
+      "@stylistic/switch-colon-spacing": "off",
+      "@stylistic/template-curly-spacing": "off",
+      "@stylistic/template-tag-spacing": "off",
+      "@stylistic/ts/block-spacing": "off",
+      "@stylistic/ts/brace-style": "off",
+      "@stylistic/ts/comma-dangle": "off",
+      "@stylistic/ts/comma-spacing": "off",
+      "@stylistic/ts/func-call-spacing": "off",
+      "@stylistic/ts/function-call-spacing": "off",
+      "@stylistic/ts/indent": "off",
+      "@stylistic/ts/key-spacing": "off",
+      "@stylistic/ts/keyword-spacing": "off",
+      "@stylistic/ts/lines-around-comment": 0,
+      "@stylistic/ts/member-delimiter-style": "off",
+      "@stylistic/ts/no-extra-parens": "off",
+      "@stylistic/ts/no-extra-semi": "off",
+      "@stylistic/ts/object-curly-spacing": "off",
+      "@stylistic/ts/quotes": 0,
+      "@stylistic/ts/semi": "off",
+      "@stylistic/ts/space-before-blocks": "off",
+      "@stylistic/ts/space-before-function-paren": "off",
+      "@stylistic/ts/space-infix-ops": "off",
+      "@stylistic/ts/type-annotation-spacing": "off",
+      "@stylistic/type-annotation-spacing": "off",
+      "@stylistic/type-generic-spacing": "off",
+      "@stylistic/type-named-tuple-spacing": "off",
+      "@stylistic/wrap-iife": "off",
+      "@stylistic/wrap-regex": "off",
+      "@stylistic/yield-star-spacing": "off",
       "@typescript-eslint/block-spacing": "off",
       "@typescript-eslint/brace-style": "off",
       "@typescript-eslint/comma-dangle": "off",
@@ -4419,7 +4600,7 @@ exports[`recommended > export recommended config 1`] = `
       "parser": {
         "meta": {
           "name": "typescript-eslint/parser",
-          "version": "8.18.2",
+          "version": "8.24.1",
         },
         "parseForESLint": [Function],
       },
@@ -4486,6 +4667,7 @@ exports[`recommended > export recommended config 1`] = `
               "@typescript-eslint/no-meaningless-void-operator": "error",
               "@typescript-eslint/no-misused-new": "error",
               "@typescript-eslint/no-misused-promises": "error",
+              "@typescript-eslint/no-misused-spread": "error",
               "@typescript-eslint/no-mixed-enums": "error",
               "@typescript-eslint/no-namespace": "error",
               "@typescript-eslint/no-non-null-asserted-nullish-coalescing": "error",
@@ -4616,6 +4798,7 @@ exports[`recommended > export recommended config 1`] = `
               "@typescript-eslint/no-implied-eval": "off",
               "@typescript-eslint/no-meaningless-void-operator": "off",
               "@typescript-eslint/no-misused-promises": "off",
+              "@typescript-eslint/no-misused-spread": "off",
               "@typescript-eslint/no-mixed-enums": "off",
               "@typescript-eslint/no-redundant-type-constituents": "off",
               "@typescript-eslint/no-unnecessary-boolean-literal-compare": "off",
@@ -4955,6 +5138,7 @@ exports[`recommended > export recommended config 1`] = `
               "@typescript-eslint/no-meaningless-void-operator": "error",
               "@typescript-eslint/no-misused-new": "error",
               "@typescript-eslint/no-misused-promises": "error",
+              "@typescript-eslint/no-misused-spread": "error",
               "@typescript-eslint/no-mixed-enums": "error",
               "@typescript-eslint/no-namespace": "error",
               "@typescript-eslint/no-non-null-asserted-nullish-coalescing": "error",
@@ -5049,6 +5233,7 @@ exports[`recommended > export recommended config 1`] = `
               "@typescript-eslint/no-implied-eval": "error",
               "@typescript-eslint/no-meaningless-void-operator": "error",
               "@typescript-eslint/no-misused-promises": "error",
+              "@typescript-eslint/no-misused-spread": "error",
               "@typescript-eslint/no-mixed-enums": "error",
               "@typescript-eslint/no-redundant-type-constituents": "error",
               "@typescript-eslint/no-unnecessary-boolean-literal-compare": "error",
@@ -5177,7 +5362,7 @@ exports[`recommended > export recommended config 1`] = `
         },
         "meta": {
           "name": "@typescript-eslint/eslint-plugin",
-          "version": "8.18.2",
+          "version": "8.24.1",
         },
         "rules": {
           "adjacent-overload-signatures": {
@@ -5439,7 +5624,7 @@ exports[`recommended > export recommended config 1`] = `
                       "type": "array",
                     },
                     "ignoreClassesThatImplementAnInterface": {
-                      "description": "Makes the rule ignore class members that are defined within a class that \`implements\` a type",
+                      "description": "Whether to ignore class members that are defined within a class that \`implements\` a type.",
                       "oneOf": [
                         {
                           "description": "Ignore all classes that implement an interface",
@@ -5455,7 +5640,7 @@ exports[`recommended > export recommended config 1`] = `
                       ],
                     },
                     "ignoreOverrideMethods": {
-                      "description": "Ignore members marked with the \`override\` modifier",
+                      "description": "Whether to ignore members marked with the \`override\` modifier.",
                       "type": "boolean",
                     },
                   },
@@ -5568,6 +5753,7 @@ exports[`recommended > export recommended config 1`] = `
             "create": [Function],
             "defaultOptions": [
               {
+                "arrayLiteralTypeAssertions": "allow",
                 "assertionStyle": "as",
                 "objectLiteralTypeAssertions": "allow",
               },
@@ -5584,8 +5770,11 @@ exports[`recommended > export recommended config 1`] = `
                 "angle-bracket": "Use '<{{cast}}>' instead of 'as {{cast}}'.",
                 "as": "Use 'as {{cast}}' instead of '<{{cast}}>'.",
                 "never": "Do not use any type assertions.",
+                "replaceArrayTypeAssertionWithAnnotation": "Use const x: {{cast}} = [ ... ] instead.",
+                "replaceArrayTypeAssertionWithSatisfies": "Use const x = [ ... ] satisfies {{cast}} instead.",
                 "replaceObjectTypeAssertionWithAnnotation": "Use const x: {{cast}} = { ... } instead.",
                 "replaceObjectTypeAssertionWithSatisfies": "Use const x = { ... } satisfies {{cast}} instead.",
+                "unexpectedArrayTypeAssertion": "Always prefer const x: T[] = [ ... ].",
                 "unexpectedObjectTypeAssertion": "Always prefer const x: T = { ... }.",
               },
               "schema": [
@@ -5610,6 +5799,15 @@ exports[`recommended > export recommended config 1`] = `
                     {
                       "additionalProperties": false,
                       "properties": {
+                        "arrayLiteralTypeAssertions": {
+                          "description": "Whether to always prefer type declarations for array literals used as variable initializers, rather than type assertions.",
+                          "enum": [
+                            "allow",
+                            "allow-as-parameter",
+                            "never",
+                          ],
+                          "type": "string",
+                        },
                         "assertionStyle": {
                           "description": "The expected assertion style to enforce.",
                           "enum": [
@@ -8761,7 +8959,11 @@ You must still type the parameters of the function.",
           },
           "no-deprecated": {
             "create": [Function],
-            "defaultOptions": [],
+            "defaultOptions": [
+              {
+                "allow": [],
+              },
+            ],
             "meta": {
               "docs": {
                 "description": "Disallow using code marked as \`@deprecated\`",
@@ -8773,7 +8975,125 @@ You must still type the parameters of the function.",
                 "deprecated": "\`{{name}}\` is deprecated.",
                 "deprecatedWithReason": "\`{{name}}\` is deprecated. {{reason}}",
               },
-              "schema": [],
+              "schema": [
+                {
+                  "additionalProperties": false,
+                  "properties": {
+                    "allow": {
+                      "description": "Type specifiers that can be allowed.",
+                      "items": {
+                        "oneOf": [
+                          {
+                            "type": "string",
+                          },
+                          {
+                            "additionalProperties": false,
+                            "properties": {
+                              "from": {
+                                "enum": [
+                                  "file",
+                                ],
+                                "type": "string",
+                              },
+                              "name": {
+                                "oneOf": [
+                                  {
+                                    "type": "string",
+                                  },
+                                  {
+                                    "items": {
+                                      "type": "string",
+                                    },
+                                    "minItems": 1,
+                                    "type": "array",
+                                    "uniqueItems": true,
+                                  },
+                                ],
+                              },
+                              "path": {
+                                "type": "string",
+                              },
+                            },
+                            "required": [
+                              "from",
+                              "name",
+                            ],
+                            "type": "object",
+                          },
+                          {
+                            "additionalProperties": false,
+                            "properties": {
+                              "from": {
+                                "enum": [
+                                  "lib",
+                                ],
+                                "type": "string",
+                              },
+                              "name": {
+                                "oneOf": [
+                                  {
+                                    "type": "string",
+                                  },
+                                  {
+                                    "items": {
+                                      "type": "string",
+                                    },
+                                    "minItems": 1,
+                                    "type": "array",
+                                    "uniqueItems": true,
+                                  },
+                                ],
+                              },
+                            },
+                            "required": [
+                              "from",
+                              "name",
+                            ],
+                            "type": "object",
+                          },
+                          {
+                            "additionalProperties": false,
+                            "properties": {
+                              "from": {
+                                "enum": [
+                                  "package",
+                                ],
+                                "type": "string",
+                              },
+                              "name": {
+                                "oneOf": [
+                                  {
+                                    "type": "string",
+                                  },
+                                  {
+                                    "items": {
+                                      "type": "string",
+                                    },
+                                    "minItems": 1,
+                                    "type": "array",
+                                    "uniqueItems": true,
+                                  },
+                                ],
+                              },
+                              "package": {
+                                "type": "string",
+                              },
+                            },
+                            "required": [
+                              "from",
+                              "name",
+                              "package",
+                            ],
+                            "type": "object",
+                          },
+                        ],
+                      },
+                      "type": "array",
+                    },
+                  },
+                  "type": "object",
+                },
+              ],
               "type": "problem",
             },
           },
@@ -9424,7 +9744,7 @@ You must still type the parameters of the function.",
             "defaultOptions": [],
             "meta": {
               "docs": {
-                "description": "Disallow the use of \`eval()\`-like methods",
+                "description": "Disallow the use of \`eval()\`-like functions",
                 "extendsBaseRule": true,
                 "recommended": "recommended",
                 "requiresTypeChecking": true,
@@ -9833,6 +10153,156 @@ You must still type the parameters of the function.",
                           "type": "object",
                         },
                       ],
+                    },
+                  },
+                  "type": "object",
+                },
+              ],
+              "type": "problem",
+            },
+          },
+          "no-misused-spread": {
+            "create": [Function],
+            "defaultOptions": [
+              {
+                "allow": [],
+              },
+            ],
+            "meta": {
+              "docs": {
+                "description": "Disallow using the spread operator when it might cause unexpected behavior",
+                "recommended": "strict",
+                "requiresTypeChecking": true,
+                "url": "https://typescript-eslint.io/rules/no-misused-spread",
+              },
+              "messages": {
+                "noArraySpreadInObject": "Using the spread operator on an array in an object will result in a list of indices.",
+                "noClassDeclarationSpreadInObject": "Using the spread operator on class declarations will spread only their static properties, and will lose their class prototype.",
+                "noClassInstanceSpreadInObject": "Using the spread operator on class instances will lose their class prototype.",
+                "noFunctionSpreadInObject": "Using the spread operator on a function without additional properties can cause unexpected behavior. Did you forget to call the function?",
+                "noIterableSpreadInObject": "Using the spread operator on an Iterable in an object can cause unexpected behavior.",
+                "noMapSpreadInObject": "Using the spread operator on a Map in an object will result in an empty object. Did you mean to use \`Object.fromEntries(map)\` instead?",
+                "noPromiseSpreadInObject": "Using the spread operator on Promise in an object can cause unexpected behavior. Did you forget to await the promise?",
+                "noStringSpread": "Using the spread operator on a string can mishandle special characters, as can \`.split("")\`.
+- \`...\` produces Unicode code points, which will decompose complex emojis into individual emojis
+- .split("") produces UTF-16 code units, which breaks rich characters in many languages
+Consider using \`Intl.Segmenter\` for locale-aware string decomposition.
+Otherwise, if you don't need to preserve emojis or other non-Ascii characters, disable this lint rule on this line or configure the 'allow' rule option.",
+              },
+              "schema": [
+                {
+                  "additionalProperties": false,
+                  "properties": {
+                    "allow": {
+                      "description": "An array of type specifiers that are known to be safe to spread.",
+                      "items": {
+                        "oneOf": [
+                          {
+                            "type": "string",
+                          },
+                          {
+                            "additionalProperties": false,
+                            "properties": {
+                              "from": {
+                                "enum": [
+                                  "file",
+                                ],
+                                "type": "string",
+                              },
+                              "name": {
+                                "oneOf": [
+                                  {
+                                    "type": "string",
+                                  },
+                                  {
+                                    "items": {
+                                      "type": "string",
+                                    },
+                                    "minItems": 1,
+                                    "type": "array",
+                                    "uniqueItems": true,
+                                  },
+                                ],
+                              },
+                              "path": {
+                                "type": "string",
+                              },
+                            },
+                            "required": [
+                              "from",
+                              "name",
+                            ],
+                            "type": "object",
+                          },
+                          {
+                            "additionalProperties": false,
+                            "properties": {
+                              "from": {
+                                "enum": [
+                                  "lib",
+                                ],
+                                "type": "string",
+                              },
+                              "name": {
+                                "oneOf": [
+                                  {
+                                    "type": "string",
+                                  },
+                                  {
+                                    "items": {
+                                      "type": "string",
+                                    },
+                                    "minItems": 1,
+                                    "type": "array",
+                                    "uniqueItems": true,
+                                  },
+                                ],
+                              },
+                            },
+                            "required": [
+                              "from",
+                              "name",
+                            ],
+                            "type": "object",
+                          },
+                          {
+                            "additionalProperties": false,
+                            "properties": {
+                              "from": {
+                                "enum": [
+                                  "package",
+                                ],
+                                "type": "string",
+                              },
+                              "name": {
+                                "oneOf": [
+                                  {
+                                    "type": "string",
+                                  },
+                                  {
+                                    "items": {
+                                      "type": "string",
+                                    },
+                                    "minItems": 1,
+                                    "type": "array",
+                                    "uniqueItems": true,
+                                  },
+                                ],
+                              },
+                              "package": {
+                                "type": "string",
+                              },
+                            },
+                            "required": [
+                              "from",
+                              "name",
+                              "package",
+                            ],
+                            "type": "object",
+                          },
+                        ],
+                      },
+                      "type": "array",
                     },
                   },
                   "type": "object",
@@ -10330,7 +10800,7 @@ You must still type the parameters of the function.",
               {
                 "allow": [],
                 "builtinGlobals": false,
-                "hoist": "functions",
+                "hoist": "functions-and-types",
                 "ignoreFunctionTypeParameterNameValueShadow": true,
                 "ignoreOnInitialization": false,
                 "ignoreTypeValueShadow": true,
@@ -10366,7 +10836,9 @@ You must still type the parameters of the function.",
                       "enum": [
                         "all",
                         "functions",
+                        "functions-and-types",
                         "never",
+                        "types",
                       ],
                       "type": "string",
                     },
@@ -10521,6 +10993,7 @@ You must still type the parameters of the function.",
               {
                 "allowComparingNullableBooleansToFalse": true,
                 "allowComparingNullableBooleansToTrue": true,
+                "allowRuleToRunWithoutStrictNullChecksIKnowWhatIAmDoing": false,
               },
             ],
             "meta": {
@@ -10537,6 +11010,7 @@ You must still type the parameters of the function.",
                 "comparingNullableToTrueNegated": "This expression unnecessarily compares a nullable boolean value to true instead of negating it.",
                 "direct": "This expression unnecessarily compares a boolean value to a boolean instead of using it directly.",
                 "negated": "This expression unnecessarily compares a boolean value to a boolean instead of negating it.",
+                "noStrictNullCheck": "This rule requires the \`strictNullChecks\` compiler option to be turned on to function correctly.",
               },
               "schema": [
                 {
@@ -10550,6 +11024,10 @@ You must still type the parameters of the function.",
                       "description": "Whether to allow comparisons between nullable boolean variables and \`true\`.",
                       "type": "boolean",
                     },
+                    "allowRuleToRunWithoutStrictNullChecksIKnowWhatIAmDoing": {
+                      "description": "Unless this is set to \`true\`, the rule will error on every file whose \`tsconfig.json\` does _not_ have the \`strictNullChecks\` compiler option (or \`strict\`) set to \`true\`.",
+                      "type": "boolean",
+                    },
                   },
                   "type": "object",
                 },
@@ -10561,7 +11039,7 @@ You must still type the parameters of the function.",
             "create": [Function],
             "defaultOptions": [
               {
-                "allowConstantLoopConditions": false,
+                "allowConstantLoopConditions": "never",
                 "allowRuleToRunWithoutStrictNullChecksIKnowWhatIAmDoing": false,
                 "checkTypePredicates": false,
               },
@@ -10594,7 +11072,19 @@ You must still type the parameters of the function.",
                   "properties": {
                     "allowConstantLoopConditions": {
                       "description": "Whether to ignore constant loop conditions, such as \`while (true)\`.",
-                      "type": "boolean",
+                      "oneOf": [
+                        {
+                          "type": "boolean",
+                        },
+                        {
+                          "enum": [
+                            "always",
+                            "never",
+                            "only-allowed-literals",
+                          ],
+                          "type": "string",
+                        },
+                      ],
                     },
                     "allowRuleToRunWithoutStrictNullChecksIKnowWhatIAmDoing": {
                       "description": "Whether to not error when running with a tsconfig that has strictNullChecks turned.",
@@ -12631,7 +13121,6 @@ You can try to fix this by turning on the \`noImplicitThis\` compiler option, or
             "meta": {
               "docs": {
                 "description": "Enforce consistent awaiting of returned promises",
-                "extendsBaseRule": "no-return-await",
                 "recommended": {
                   "strict": [
                     "error-handling-correctness-only",
@@ -12792,7 +13281,6 @@ You can try to fix this by turning on the \`noImplicitThis\` compiler option, or
                 "requiresTypeChecking": true,
                 "url": "https://typescript-eslint.io/rules/strict-boolean-expressions",
               },
-              "fixable": "code",
               "hasSuggestions": true,
               "messages": {
                 "conditionErrorAny": "Unexpected any value in conditional. An explicit comparison or type conversion is required.",
@@ -12807,6 +13295,8 @@ You can try to fix this by turning on the \`noImplicitThis\` compiler option, or
                 "conditionErrorOther": "Unexpected value in conditional. A boolean expression is required.",
                 "conditionErrorString": "Unexpected string value in conditional. An explicit empty string check is required.",
                 "conditionFixCastBoolean": "Explicitly convert value to a boolean (\`Boolean(value)\`)",
+                "conditionFixCompareArrayLengthNonzero": "Change condition to check array's length (\`value.length > 0\`)",
+                "conditionFixCompareArrayLengthZero": "Change condition to check array's length (\`value.length === 0\`)",
                 "conditionFixCompareEmptyString": "Change condition to check for empty string (\`value !== ""\`)",
                 "conditionFixCompareFalse": "Change condition to check if false (\`value === false\`)",
                 "conditionFixCompareNaN": "Change condition to check for NaN (\`!Number.isNaN(value)\`)",
@@ -12817,7 +13307,10 @@ You can try to fix this by turning on the \`noImplicitThis\` compiler option, or
                 "conditionFixDefaultEmptyString": "Explicitly treat nullish value the same as an empty string (\`value ?? ""\`)",
                 "conditionFixDefaultFalse": "Explicitly treat nullish value the same as false (\`value ?? false\`)",
                 "conditionFixDefaultZero": "Explicitly treat nullish value the same as 0 (\`value ?? 0\`)",
+                "explicitBooleanReturnType": "Add an explicit \`boolean\` return type annotation.",
                 "noStrictNullCheck": "This rule requires the \`strictNullChecks\` compiler option to be turned on to function correctly.",
+                "predicateCannotBeAsync": "Predicate function should not be 'async'; expected a boolean return type.",
+                "predicateReturnsNonBoolean": "Predicate function should return a boolean.",
               },
               "schema": [
                 {
@@ -13192,11 +13685,13 @@ If your function does not access \`this\`, you can annotate it with \`this: void
     },
   },
   {
+    "name": "tanstack/query/flat/recommended",
     "plugins": {
       "@tanstack/query": {
         "configs": {
           "flat/recommended": [
             {
+              "name": "tanstack/query/flat/recommended",
               "plugins": [Circular],
               "rules": {
                 "@tanstack/query/exhaustive-deps": "error",
@@ -13358,39 +13853,22 @@ See https://tkdodo.eu/blog/react-query-fa-qs#2-the-queryclient-is-not-stable",
               "messages": {
                 "componentFileShouldExportComponent": "컴포넌트 파일은 컴포넌트를 내보내야 합니다.",
                 "componentNameShouldBeFollowDirectoryStructure": "컴포넌트 이름은 디렉토리명 혹은 파일명을 따라야 합니다.",
-                "componentPropsShouldHaveTypeAnnotationWhenEmptyObjectPattern": "컴포넌트의 \`props\`가 비어있고 타입이 없을 경우 반드시 타입을 명시해야 합니다.",
               },
               "schema": [],
               "type": "problem",
             },
           },
-          "css-ts": {
+          "component-interface": {
             "create": [Function],
             "defaultOptions": [],
             "meta": {
               "docs": {
-                "description": "required 스타일 파일은 \`Style\`을 내보내야 합니다.",
-                "url": "https://github.com/dev-five-git/devup/tree/main/packages/eslint-plugin/src/rules/css-ts",
+                "description": "required type annotation for component props when empty object pattern",
+                "url": "https://github.com/dev-five-git/devup/tree/main/packages/eslint-plugin/src/rules/component-interface",
               },
               "fixable": "code",
               "messages": {
-                "cssTsFileShouldExportStyle": "\`css.ts\` 파일은 \`Style\`을 내보내야 합니다.",
-                "styleInCssTsShouldHaveStylePostfix": "css.ts 에 정의된 스타일은 반드시 \`Style\`로 끝나야 합니다.",
-              },
-              "schema": [],
-              "type": "problem",
-            },
-          },
-          "layout": {
-            "create": [Function],
-            "meta": {
-              "docs": {
-                "description": "enforce Row 컴포넌트의 자식은 Col 컴포넌트만 가능합니다.",
-                "recommended": true,
-              },
-              "fixable": "code",
-              "messages": {
-                "rowChildShouldBeCol": "Row 컴포넌트의 자식은 Col 컴포넌트만 가능합니다.",
+                "componentPropsShouldHaveTypeAnnotationWhenEmptyObjectPattern": "컴포넌트의 \`props\`가 비어있고 타입이 없을 경우 반드시 타입을 명시해야 합니다.",
               },
               "schema": [],
               "type": "problem",
@@ -13718,8 +14196,6 @@ See https://tkdodo.eu/blog/react-query-fa-qs#2-the-queryclient-is-not-stable",
     "rules": {
       "@devup/app-page": "error",
       "@devup/component": "error",
-      "@devup/css-ts": "error",
-      "@devup/layout": "error",
       "@devup/rsc-api": "error",
       "@typescript-eslint/ban-ts-comment": "off",
       "@typescript-eslint/explicit-module-boundary-types": "off",
