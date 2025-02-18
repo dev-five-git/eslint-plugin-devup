@@ -125,6 +125,7 @@ export default [
           },
         ],
         '@devup/rsc-api': 'error',
+        '@devup/component-interface': 'error',
         '@devup/app-page': 'error',
         '@devup/component': 'error',
         ...hooksPlugin.configs.recommended.rules,
