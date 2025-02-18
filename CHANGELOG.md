@@ -1,5 +1,11 @@
 # @devup/eslint-plugin
 
+## 2.0.2
+
+### Patch Changes
+
+- e3b89ee: Add component-interface rule
+
 ## 2.0.1
 
 ### Patch Changes
