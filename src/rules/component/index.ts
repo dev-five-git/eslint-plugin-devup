@@ -69,6 +69,12 @@ export const component = createRule({
           }
           exportFunc.push(declaration.id!)
         }
+        if (declaration.type === 'ClassDeclaration') {
+          if (declaration.id!.name === targetComponentName) {
+            ok = true
+            return
+          }
+        }
         if (declaration.type === 'VariableDeclaration') {
           for (const el of declaration.declarations) {
             if (el.id.type !== 'Identifier') continue

@@ -77,12 +77,6 @@ export default [
         camelcase: 'off',
         'simple-import-sort/imports': 'error',
         'simple-import-sort/exports': 'error',
-        'react-hooks/exhaustive-deps': [
-          'warn',
-          {
-            additionalHooks: 'useSafeEffect',
-          },
-        ],
         'react/jsx-sort-props': [
           'error',
           {
@@ -129,7 +123,12 @@ export default [
         '@devup/app-page': 'error',
         '@devup/component': 'error',
         ...hooksPlugin.configs.recommended.rules,
-        // Fix eslint 15 bug
+        'react-hooks/exhaustive-deps': [
+          'warn',
+          {
+            additionalHooks: 'useSafeEffect',
+          },
+        ],
         '@typescript-eslint/no-unused-expressions': [
           'error',
           {

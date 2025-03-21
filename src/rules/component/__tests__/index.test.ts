@@ -32,6 +32,10 @@ describe('component rule', () => {
         filename: 'src/components/page.tsx',
       },
       {
+        code: 'export class Page extends React.Component{render(){return <Row><Col></Col></Row>}}',
+        filename: 'src/components/page.tsx',
+      },
+      {
         // 예외
         code: 'export {a} from "./a"',
         filename: 'src/components/index.tsx',
