@@ -4600,7 +4600,7 @@ exports[`recommended > export recommended config 1`] = `
       "parser": {
         "meta": {
           "name": "typescript-eslint/parser",
-          "version": "8.24.1",
+          "version": "8.27.0",
         },
         "parseForESLint": [Function],
       },
@@ -5362,7 +5362,7 @@ exports[`recommended > export recommended config 1`] = `
         },
         "meta": {
           "name": "@typescript-eslint/eslint-plugin",
-          "version": "8.24.1",
+          "version": "8.27.0",
         },
         "rules": {
           "adjacent-overload-signatures": {
@@ -6200,6 +6200,7 @@ exports[`recommended > export recommended config 1`] = `
                 "allowArgumentsExplicitlyTypedAsAny": false,
                 "allowDirectConstAssertionInArrowFunctions": true,
                 "allowHigherOrderFunctions": true,
+                "allowOverloadFunctions": false,
                 "allowTypedFunctionExpressions": true,
                 "allowedNames": [],
               },
@@ -6232,6 +6233,10 @@ You must still type the parameters of the function.",
                     "allowHigherOrderFunctions": {
                       "description": "Whether to ignore return type annotations on functions immediately returning another function expression.
 You must still type the parameters of the function.",
+                      "type": "boolean",
+                    },
+                    "allowOverloadFunctions": {
+                      "description": "Whether to ignore return type annotations on functions with overload signatures.",
                       "type": "boolean",
                     },
                     "allowTypedFunctionExpressions": {
@@ -9253,7 +9258,18 @@ You must still type the parameters of the function.",
               },
             ],
             "meta": {
-              "deprecated": true,
+              "deprecated": {
+                "deprecatedSince": "8.0.0",
+                "replacedBy": [
+                  {
+                    "rule": {
+                      "name": "@typescript-eslint/no-empty-object-type",
+                      "url": "https://typescript-eslint.io/rules/no-empty-object-type",
+                    },
+                  },
+                ],
+                "url": "https://github.com/typescript-eslint/typescript-eslint/pull/8977",
+              },
               "docs": {
                 "description": "Disallow the declaration of empty interfaces",
                 "url": "https://typescript-eslint.io/rules/no-empty-interface",
@@ -9922,7 +9938,18 @@ You must still type the parameters of the function.",
             "create": [Function],
             "defaultOptions": [],
             "meta": {
-              "deprecated": true,
+              "deprecated": {
+                "deprecatedSince": "8.0.0",
+                "replacedBy": [
+                  {
+                    "rule": {
+                      "name": "no-loss-of-precision",
+                      "url": "https://eslint.org/docs/latest/rules/no-loss-of-precision",
+                    },
+                  },
+                ],
+                "url": "https://github.com/typescript-eslint/typescript-eslint/pull/8832",
+              },
               "docs": {
                 "description": "Disallow literal numbers that lose precision",
                 "extendsBaseRule": true,
@@ -10175,7 +10202,9 @@ You must still type the parameters of the function.",
                 "requiresTypeChecking": true,
                 "url": "https://typescript-eslint.io/rules/no-misused-spread",
               },
+              "hasSuggestions": true,
               "messages": {
+                "addAwait": "Add await operator.",
                 "noArraySpreadInObject": "Using the spread operator on an array in an object will result in a list of indices.",
                 "noClassDeclarationSpreadInObject": "Using the spread operator on class declarations will spread only their static properties, and will lose their class prototype.",
                 "noClassInstanceSpreadInObject": "Using the spread operator on class instances will lose their class prototype.",
@@ -10188,6 +10217,7 @@ You must still type the parameters of the function.",
 - .split("") produces UTF-16 code units, which breaks rich characters in many languages
 Consider using \`Intl.Segmenter\` for locale-aware string decomposition.
 Otherwise, if you don't need to preserve emojis or other non-Ascii characters, disable this lint rule on this line or configure the 'allow' rule option.",
+                "replaceMapSpreadInObject": "Replace map spread in object with \`Object.fromEntries()\`",
               },
               "schema": [
                 {
@@ -10916,7 +10946,18 @@ Otherwise, if you don't need to preserve emojis or other non-Ascii characters, d
               },
             ],
             "meta": {
-              "deprecated": true,
+              "deprecated": {
+                "deprecatedSince": "6.0.0",
+                "replacedBy": [
+                  {
+                    "rule": {
+                      "name": "@typescript-eslint/consistent-type-definitions",
+                      "url": "https://typescript-eslint.io/rules/consistent-type-definitions",
+                    },
+                  },
+                ],
+                "url": "https://github.com/typescript-eslint/typescript-eslint/pull/6229",
+              },
               "docs": {
                 "description": "Disallow type aliases",
                 "url": "https://typescript-eslint.io/rules/no-type-alias",
@@ -11694,7 +11735,18 @@ You can try to fix this by turning on the \`noImplicitThis\` compiler option, or
               },
             ],
             "meta": {
-              "deprecated": true,
+              "deprecated": {
+                "deprecatedSince": "8.0.0",
+                "replacedBy": [
+                  {
+                    "rule": {
+                      "name": "@typescript-eslint/no-require-imports",
+                      "url": "https://typescript-eslint.io/rules/no-require-imports",
+                    },
+                  },
+                ],
+                "url": "https://github.com/typescript-eslint/typescript-eslint/pull/8334",
+              },
               "docs": {
                 "description": "Disallow \`require\` statements except in import statements",
                 "url": "https://typescript-eslint.io/rules/no-var-requires",
@@ -12706,7 +12758,18 @@ You can try to fix this by turning on the \`noImplicitThis\` compiler option, or
             "create": [Function],
             "defaultOptions": [],
             "meta": {
-              "deprecated": true,
+              "deprecated": {
+                "deprecatedSince": "7.11.0",
+                "replacedBy": [
+                  {
+                    "rule": {
+                      "name": "@typescript-eslint/ban-ts-comment",
+                      "url": "https://typescript-eslint.io/rules/ban-ts-comment",
+                    },
+                  },
+                ],
+                "url": "https://github.com/typescript-eslint/typescript-eslint/pull/9081",
+              },
               "docs": {
                 "description": "Enforce using \`@ts-expect-error\` over \`@ts-ignore\`",
                 "url": "https://typescript-eslint.io/rules/prefer-ts-expect-error",
@@ -13200,7 +13263,32 @@ You can try to fix this by turning on the \`noImplicitThis\` compiler option, or
               },
             ],
             "meta": {
-              "deprecated": true,
+              "deprecated": {
+                "deprecatedSince": "7.13.0",
+                "replacedBy": [
+                  {
+                    "plugin": {
+                      "name": "eslint-plugin-perfectionist",
+                      "url": "https://perfectionist.dev",
+                    },
+                    "rule": {
+                      "name": "perfectionist/sort-intersection-types",
+                      "url": "https://perfectionist.dev/rules/sort-intersection-types",
+                    },
+                  },
+                  {
+                    "plugin": {
+                      "name": "eslint-plugin-perfectionist",
+                      "url": "https://perfectionist.dev",
+                    },
+                    "rule": {
+                      "name": "perfectionist/sort-union-types",
+                      "url": "https://perfectionist.dev/rules/sort-union-types",
+                    },
+                  },
+                ],
+                "url": "https://github.com/typescript-eslint/typescript-eslint/pull/9253",
+              },
               "docs": {
                 "description": "Enforce constituents of a type union/intersection to be sorted alphabetically",
                 "url": "https://typescript-eslint.io/rules/sort-type-constituents",
@@ -13283,17 +13371,17 @@ You can try to fix this by turning on the \`noImplicitThis\` compiler option, or
               },
               "hasSuggestions": true,
               "messages": {
-                "conditionErrorAny": "Unexpected any value in conditional. An explicit comparison or type conversion is required.",
-                "conditionErrorNullableBoolean": "Unexpected nullable boolean value in conditional. Please handle the nullish case explicitly.",
-                "conditionErrorNullableEnum": "Unexpected nullable enum value in conditional. Please handle the nullish/zero/NaN cases explicitly.",
-                "conditionErrorNullableNumber": "Unexpected nullable number value in conditional. Please handle the nullish/zero/NaN cases explicitly.",
-                "conditionErrorNullableObject": "Unexpected nullable object value in conditional. An explicit null check is required.",
-                "conditionErrorNullableString": "Unexpected nullable string value in conditional. Please handle the nullish/empty cases explicitly.",
+                "conditionErrorAny": "Unexpected any value in {{context}}. An explicit comparison or type conversion is required.",
+                "conditionErrorNullableBoolean": "Unexpected nullable boolean value in {{context}}. Please handle the nullish case explicitly.",
+                "conditionErrorNullableEnum": "Unexpected nullable enum value in {{context}}. Please handle the nullish/zero/NaN cases explicitly.",
+                "conditionErrorNullableNumber": "Unexpected nullable number value in {{context}}. Please handle the nullish/zero/NaN cases explicitly.",
+                "conditionErrorNullableObject": "Unexpected nullable object value in {{context}}. An explicit null check is required.",
+                "conditionErrorNullableString": "Unexpected nullable string value in {{context}}. Please handle the nullish/empty cases explicitly.",
                 "conditionErrorNullish": "Unexpected nullish value in conditional. The condition is always false.",
-                "conditionErrorNumber": "Unexpected number value in conditional. An explicit zero/NaN check is required.",
-                "conditionErrorObject": "Unexpected object value in conditional. The condition is always true.",
+                "conditionErrorNumber": "Unexpected number value in {{context}}. An explicit zero/NaN check is required.",
+                "conditionErrorObject": "Unexpected object value in {{context}}. The condition is always true.",
                 "conditionErrorOther": "Unexpected value in conditional. A boolean expression is required.",
-                "conditionErrorString": "Unexpected string value in conditional. An explicit empty string check is required.",
+                "conditionErrorString": "Unexpected string value in {{context}}. An explicit empty string check is required.",
                 "conditionFixCastBoolean": "Explicitly convert value to a boolean (\`Boolean(value)\`)",
                 "conditionFixCompareArrayLengthNonzero": "Change condition to check array's length (\`value.length > 0\`)",
                 "conditionFixCompareArrayLengthZero": "Change condition to check array's length (\`value.length === 0\`)",
@@ -13310,7 +13398,6 @@ You can try to fix this by turning on the \`noImplicitThis\` compiler option, or
                 "explicitBooleanReturnType": "Add an explicit \`boolean\` return type annotation.",
                 "noStrictNullCheck": "This rule requires the \`strictNullChecks\` compiler option to be turned on to function correctly.",
                 "predicateCannotBeAsync": "Predicate function should not be 'async'; expected a boolean return type.",
-                "predicateReturnsNonBoolean": "Predicate function should return a boolean.",
               },
               "schema": [
                 {
@@ -13566,6 +13653,7 @@ If your function does not access \`this\`, you can annotate it with \`this: void
             "defaultOptions": [
               {
                 "ignoreDifferentlyNamedParameters": false,
+                "ignoreOverloadsWithDifferentJSDoc": false,
               },
             ],
             "meta": {
@@ -13585,6 +13673,10 @@ If your function does not access \`this\`, you can annotate it with \`this: void
                   "properties": {
                     "ignoreDifferentlyNamedParameters": {
                       "description": "Whether two parameters with different names at the same index should be considered different even if their types are the same.",
+                      "type": "boolean",
+                    },
+                    "ignoreOverloadsWithDifferentJSDoc": {
+                      "description": "Whether two overloads with different JSDoc comments should be considered different even if their parameter and return types are the same.",
                       "type": "boolean",
                     },
                   },
@@ -13902,6 +13994,74 @@ See https://tkdodo.eu/blog/react-query-fa-qs#2-the-queryclient-is-not-stable",
               "react-hooks/rules-of-hooks": "error",
             },
           },
+          "recommended-latest": {
+            "name": "react-hooks/recommended",
+            "plugins": {
+              "react-hooks": {
+                "configs": [Circular],
+                "meta": {
+                  "name": "eslint-plugin-react-hooks",
+                },
+                "rules": {
+                  "exhaustive-deps": {
+                    "create": [Function],
+                    "meta": {
+                      "docs": {
+                        "description": "verifies the list of dependencies for Hooks like useEffect and similar",
+                        "recommended": true,
+                        "url": "https://github.com/facebook/react/issues/14920",
+                      },
+                      "fixable": "code",
+                      "hasSuggestions": true,
+                      "schema": [
+                        {
+                          "additionalProperties": false,
+                          "enableDangerousAutofixThisMayCauseInfiniteLoops": false,
+                          "properties": {
+                            "additionalHooks": {
+                              "type": "string",
+                            },
+                            "enableDangerousAutofixThisMayCauseInfiniteLoops": {
+                              "type": "boolean",
+                            },
+                          },
+                          "type": "object",
+                        },
+                      ],
+                      "type": "suggestion",
+                    },
+                  },
+                  "rules-of-hooks": {
+                    "create": [Function],
+                    "meta": {
+                      "docs": {
+                        "description": "enforces the Rules of Hooks",
+                        "recommended": true,
+                        "url": "https://reactjs.org/docs/hooks-rules.html",
+                      },
+                      "type": "problem",
+                    },
+                  },
+                },
+              },
+            },
+            "rules": {
+              "react-hooks/exhaustive-deps": "warn",
+              "react-hooks/rules-of-hooks": "error",
+            },
+          },
+          "recommended-legacy": {
+            "plugins": [
+              "react-hooks",
+            ],
+            "rules": {
+              "react-hooks/exhaustive-deps": "warn",
+              "react-hooks/rules-of-hooks": "error",
+            },
+          },
+        },
+        "meta": {
+          "name": "eslint-plugin-react-hooks",
         },
         "rules": {
           "exhaustive-deps": {
@@ -14250,7 +14410,12 @@ See https://tkdodo.eu/blog/react-query-fa-qs#2-the-queryclient-is-not-stable",
           "trailingComma": "all",
         },
       ],
-      "react-hooks/exhaustive-deps": "warn",
+      "react-hooks/exhaustive-deps": [
+        "warn",
+        {
+          "additionalHooks": "useSafeEffect",
+        },
+      ],
       "react-hooks/rules-of-hooks": "error",
       "react/jsx-curly-brace-presence": "error",
       "react/jsx-sort-props": [

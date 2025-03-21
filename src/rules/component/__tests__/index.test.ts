@@ -17,6 +17,10 @@ describe('component rule', () => {
     valid: [
       {
         code: 'export default function IndexPage(){return <Row><Col></Col></Row>}',
+        filename: 'src/app/page',
+      },
+      {
+        code: 'export default function IndexPage(){return <Row><Col></Col></Row>}',
         filename: 'src/app/page.tsx',
       },
       {
@@ -29,6 +33,10 @@ describe('component rule', () => {
       },
       {
         code: 'export function Page(){return <Row><Col></Col></Row>}',
+        filename: 'src/components/page.tsx',
+      },
+      {
+        code: 'export class Page extends React.Component{render(){return <Row><Col></Col></Row>}}',
         filename: 'src/components/page.tsx',
       },
       {
