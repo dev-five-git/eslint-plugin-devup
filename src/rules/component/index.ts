@@ -82,7 +82,7 @@ export const component = createRule({
     const isTargetComponent = (name: string) => name === targetComponentName
 
     return {
-      ExportDefaultDeclaration(defaultExport) {
+      ExportDefaultDeclaration() {
         ok = true
       },
       ExportNamedDeclaration(namedExport) {
