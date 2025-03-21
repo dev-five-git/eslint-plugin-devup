@@ -17,6 +17,10 @@ describe('component rule', () => {
     valid: [
       {
         code: 'export default function IndexPage(){return <Row><Col></Col></Row>}',
+        filename: 'src/app/page',
+      },
+      {
+        code: 'export default function IndexPage(){return <Row><Col></Col></Row>}',
         filename: 'src/app/page.tsx',
       },
       {

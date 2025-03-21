@@ -1,4 +1,10 @@
 import { ESLintUtils, TSESTree } from '@typescript-eslint/utils'
+
+/**
+ * 문자열을 파스칼 케이스로 변환합니다.
+ * @param str 변환할 문자열
+ * @returns 파스칼 케이스로 변환된 문자열
+ */
 function toPascal(str: string) {
   return str
     .replace(/[-_](.)/g, (_, c) => c.toUpperCase())
@@ -9,6 +15,18 @@ const createRule = ESLintUtils.RuleCreator(
   (name) =>
     `https://github.com/dev-five-git/devup/tree/main/packages/eslint-plugin/src/rules/${name}`,
 )
+
+// 검사 제외 파일 패턴
+const EXCLUDE_PATTERNS = [
+  /[\\/]utils[\\/]/,
+  /[\\/](__)?tests?(__)?[\\/]/,
+  /\.(test|css|stories)\.[jt]sx$/,
+]
+
+// 검사 대상 파일 패턴
+const INCLUDE_PATTERNS = [
+  /(src[/\\])?(app[/\\](?!.*[\\/]?(page|layout|404)\.[jt]sx$)|components[/\\]).*\.[jt]sx$/,
+]
 
 export const component = createRule({
   name: 'component',
@@ -31,67 +49,88 @@ export const component = createRule({
   create(context) {
     const filename = context.physicalFilename
 
-    if (
-      !/(src[/\\])?(app[/\\](?!.*[\\/]?(page|layout|404)\.[jt]sx$)|components[/\\]).*\.[jt]sx$/.test(
-        filename,
-      ) ||
-      /[\\/]utils[\\/]|[\\/](__)?tests?(__)?[\\/]|\.(test|css|stories)\.[jt]sx$/.test(
-        filename,
-      )
-    )
+    // 검사 대상이 아닌 파일은 빈 객체 반환
+    const isIncluded = INCLUDE_PATTERNS.some(pattern => pattern.test(filename))
+    const isExcluded = EXCLUDE_PATTERNS.some(pattern => pattern.test(filename))
+    
+    if (!isIncluded || isExcluded) {
       return {}
+    }
+
+    // 파일 경로에서 컴포넌트 이름 추출
     const targetComponentRegex = /([^/\\]+)[/\\]([^/\\]+)\.[jt]sx$/i.exec(
       filename,
     )!
-    let targetComponentName
+    
     const isIndex = targetComponentRegex[2].startsWith('index')
-
-    if (isIndex) targetComponentName = toPascal(targetComponentRegex[1])
-    else targetComponentName = toPascal(targetComponentRegex[2])
+    const targetComponentName = isIndex 
+      ? toPascal(targetComponentRegex[1]) 
+      : toPascal(targetComponentRegex[2])
+    
     const exportFunc: TSESTree.Node[] = []
     let ok = false
+
+    /**
+     * 선언이 타겟 컴포넌트 이름과 일치하는지 확인
+     * @param name 선언된 이름
+     * @returns 일치 여부
+     */
+    const isTargetComponent = (name: string) => name === targetComponentName
 
     return {
       ExportNamedDeclaration(namedExport) {
         if (ok) return
+        
+        // index 파일에서 export 구문이 있는 경우 검사 통과
         if (namedExport.specifiers.length && isIndex) {
-          // export 용
           ok = true
           return
         }
+        
         const declaration = namedExport.declaration
         if (!declaration) return
-        if (declaration.type === 'FunctionDeclaration') {
-          // export 아래기 때문에 반드시 id가 있습니다.
-          if (targetComponentName === declaration.id!.name) {
+        
+        // 함수 선언 검사
+        if (declaration.type === 'FunctionDeclaration' && declaration.id) {
+          if (isTargetComponent(declaration.id.name)) {
             ok = true
             return
           }
-          exportFunc.push(declaration.id!)
+          exportFunc.push(declaration.id)
         }
-        if (declaration.type === 'ClassDeclaration') {
-          if (declaration.id!.name === targetComponentName) {
+        
+        // 클래스 선언 검사
+        if (declaration.type === 'ClassDeclaration' && declaration.id) {
+          if (isTargetComponent(declaration.id.name)) {
             ok = true
             return
           }
         }
+        
+        // 변수 선언 검사 (화살표 함수, 함수 표현식 등)
         if (declaration.type === 'VariableDeclaration') {
           for (const el of declaration.declarations) {
             if (el.id.type !== 'Identifier') continue
-            if (el.id.name === targetComponentName) {
+            
+            if (isTargetComponent(el.id.name)) {
               ok = true
               return
             }
-            if (
+            
+            const isComponentFunction = 
               el.init?.type === 'ArrowFunctionExpression' ||
               el.init?.type === 'FunctionExpression'
-            )
+              
+            if (isComponentFunction) {
               exportFunc.push(el.id)
+            }
           }
         }
       },
       'Program:exit'(program) {
         if (ok) return
+        
+        // 컴포넌트 이름이 일치하지 않는 경우 수정 제안
         if (exportFunc.length) {
           for (const exported of exportFunc) {
             context.report({
@@ -104,13 +143,17 @@ export const component = createRule({
           }
           return
         }
+        
+        // 컴포넌트를 내보내지 않는 경우 기본 컴포넌트 추가 제안
         context.report({
           node: program,
           messageId: 'componentFileShouldExportComponent',
           fix(fixer) {
+            const hasContent = context.sourceCode.text.trim().length > 0
+            const newline = hasContent ? '\n' : ''
             return fixer.insertTextAfter(
               context.sourceCode.ast,
-              `${context.sourceCode.text.trim().length ? '\n' : ''}export function ${targetComponentName}(){return <></>}`,
+              `${newline}export function ${targetComponentName}(){return <></>}`,
             )
           },
         })
