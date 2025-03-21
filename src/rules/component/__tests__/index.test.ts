@@ -24,6 +24,10 @@ describe('component rule', () => {
         filename: 'src/app/page.tsx',
       },
       {
+        code: 'export default function Hello(){return <Row><Col></Col></Row>}',
+        filename: 'src/components/Hello.tsx',
+      },
+      {
         code: 'export default function IndexPage(){return <Row><Col></Col></Row>}',
         filename: 'src/app/aaa/bb/cc/page.tsx',
       },
