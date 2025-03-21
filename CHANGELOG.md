@@ -1,5 +1,11 @@
 # @devup/eslint-plugin
 
+## 2.0.5
+
+### Patch Changes
+
+- 638a1d4: Allow export default
+
 ## 2.0.4
 
 ### Patch Changes
