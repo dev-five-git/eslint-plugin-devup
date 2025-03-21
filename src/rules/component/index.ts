@@ -50,9 +50,13 @@ export const component = createRule({
     const filename = context.physicalFilename
 
     // 검사 대상이 아닌 파일은 빈 객체 반환
-    const isIncluded = INCLUDE_PATTERNS.some(pattern => pattern.test(filename))
-    const isExcluded = EXCLUDE_PATTERNS.some(pattern => pattern.test(filename))
-    
+    const isIncluded = INCLUDE_PATTERNS.some((pattern) =>
+      pattern.test(filename),
+    )
+    const isExcluded = EXCLUDE_PATTERNS.some((pattern) =>
+      pattern.test(filename),
+    )
+
     if (!isIncluded || isExcluded) {
       return {}
     }
@@ -61,12 +65,12 @@ export const component = createRule({
     const targetComponentRegex = /([^/\\]+)[/\\]([^/\\]+)\.[jt]sx$/i.exec(
       filename,
     )!
-    
+
     const isIndex = targetComponentRegex[2].startsWith('index')
-    const targetComponentName = isIndex 
-      ? toPascal(targetComponentRegex[1]) 
+    const targetComponentName = isIndex
+      ? toPascal(targetComponentRegex[1])
       : toPascal(targetComponentRegex[2])
-    
+
     const exportFunc: TSESTree.Node[] = []
     let ok = false
 
@@ -80,16 +84,16 @@ export const component = createRule({
     return {
       ExportNamedDeclaration(namedExport) {
         if (ok) return
-        
+
         // index 파일에서 export 구문이 있는 경우 검사 통과
         if (namedExport.specifiers.length && isIndex) {
           ok = true
           return
         }
-        
+
         const declaration = namedExport.declaration
         if (!declaration) return
-        
+
         // 함수 선언 검사
         if (declaration.type === 'FunctionDeclaration' && declaration.id) {
           if (isTargetComponent(declaration.id.name)) {
@@ -98,7 +102,7 @@ export const component = createRule({
           }
           exportFunc.push(declaration.id)
         }
-        
+
         // 클래스 선언 검사
         if (declaration.type === 'ClassDeclaration' && declaration.id) {
           if (isTargetComponent(declaration.id.name)) {
@@ -106,21 +110,21 @@ export const component = createRule({
             return
           }
         }
-        
+
         // 변수 선언 검사 (화살표 함수, 함수 표현식 등)
         if (declaration.type === 'VariableDeclaration') {
           for (const el of declaration.declarations) {
             if (el.id.type !== 'Identifier') continue
-            
+
             if (isTargetComponent(el.id.name)) {
               ok = true
               return
             }
-            
-            const isComponentFunction = 
+
+            const isComponentFunction =
               el.init?.type === 'ArrowFunctionExpression' ||
               el.init?.type === 'FunctionExpression'
-              
+
             if (isComponentFunction) {
               exportFunc.push(el.id)
             }
@@ -129,7 +133,7 @@ export const component = createRule({
       },
       'Program:exit'(program) {
         if (ok) return
-        
+
         // 컴포넌트 이름이 일치하지 않는 경우 수정 제안
         if (exportFunc.length) {
           for (const exported of exportFunc) {
@@ -143,7 +147,7 @@ export const component = createRule({
           }
           return
         }
-        
+
         // 컴포넌트를 내보내지 않는 경우 기본 컴포넌트 추가 제안
         context.report({
           node: program,
