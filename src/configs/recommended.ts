@@ -1,5 +1,7 @@
+import devupUiEslintPlugin from '@devup-ui/eslint-plugin'
 import js from '@eslint/js'
 import pluginQuery from '@tanstack/eslint-plugin-query'
+import * as mdx from 'eslint-plugin-mdx'
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
 // @ts-ignore
 import react from 'eslint-plugin-react'
@@ -9,7 +11,7 @@ import simpleImportSort from 'eslint-plugin-simple-import-sort'
 import unusedImports from 'eslint-plugin-unused-imports'
 import tseslint from 'typescript-eslint'
 
-import { appPage, component, componentInterface, rscApi } from '../rules'
+import { appPage, component, componentInterface } from '../rules'
 
 export default [
   {
@@ -27,8 +29,12 @@ export default [
       '**/.next/',
       '**/public/',
       '**/.df/',
+      '**/df/',
+      '**/coverage/',
+      '**/target/',
     ],
   },
+  ...devupUiEslintPlugin.configs.recommended,
   react.configs.flat!.recommended,
   ...tseslint.config(
     js.configs.recommended,
@@ -38,7 +44,7 @@ export default [
     {
       settings: {
         react: {
-          version: 'detect',
+          version: 'latest',
         },
       },
       plugins: {
@@ -48,7 +54,6 @@ export default [
         '@devup': {
           rules: {
             component,
-            'rsc-api': rscApi,
             'app-page': appPage,
             'component-interface': componentInterface,
           },
@@ -118,7 +123,6 @@ export default [
             markers: ['/'],
           },
         ],
-        '@devup/rsc-api': 'error',
         '@devup/component-interface': 'error',
         '@devup/app-page': 'error',
         '@devup/component': 'error',
@@ -145,4 +149,23 @@ export default [
       },
     },
   ),
+  // md, mdx rules
+  {
+    ...mdx.flat,
+    files: ['**/*.{md,mdx}'],
+    processor: mdx.createRemarkProcessor({
+      lintCodeBlocks: true,
+    }),
+  },
+  {
+    ...mdx.flatCodeBlocks,
+    files: ['**/*.{md,mdx}/*.{js,jsx,ts,tsx}'],
+    rules: {
+      ...mdx.flatCodeBlocks.rules,
+      'react/jsx-no-undef': 'off',
+      'react/jsx-tag-spacing': ['error', { beforeClosing: 'never' }],
+      'no-empty-pattern': 'off',
+      '@typescript-eslint/no-empty-object-type': 'off',
+    },
+  },
 ] as any

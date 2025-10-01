@@ -30,7 +30,6 @@ export default configs.recommended
 
 Coverage score must be 100%.
 
-
 ```bash
 pnpm test
 ```
