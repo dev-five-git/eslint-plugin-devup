@@ -1,5 +1,11 @@
 # @devup/eslint-plugin
 
+## 2.0.7
+
+### Patch Changes
+
+- 75bc54d: Add venv to ignore
+
 ## 2.0.6
 
 ### Patch Changes
