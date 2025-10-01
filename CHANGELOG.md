@@ -1,5 +1,11 @@
 # @devup/eslint-plugin
 
+## 2.0.6
+
+### Patch Changes
+
+- 31cdecb: Add devup-ui rules
+
 ## 2.0.5
 
 ### Patch Changes
