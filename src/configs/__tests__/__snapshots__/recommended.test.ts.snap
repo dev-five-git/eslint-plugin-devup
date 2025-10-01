@@ -6,10 +6,6 @@ exports[`recommended > export recommended config 1`] = `
     "ignores": [
       "**/node_modules/",
       "**/build/",
-      "**/__snapshots__/",
-      "!**/src/**",
-      "!vite.config.ts",
-      "!**/.storybook/**",
       "**/storybook-static/",
       "**/dist/",
       "**/next-env.d.ts",
@@ -22,6 +18,11 @@ exports[`recommended > export recommended config 1`] = `
       "**/target/",
       "**/venv/",
       "**/.venv/",
+      ".husky/",
+      "!**/src/**",
+      "!vite.config.ts",
+      "!**/.storybook/**",
+      "**/__snapshots__/",
     ],
   },
   {
