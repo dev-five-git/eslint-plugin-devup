@@ -20,6 +20,8 @@ exports[`recommended > export recommended config 1`] = `
       "**/df/",
       "**/coverage/",
       "**/target/",
+      "**/venv/",
+      "**/.venv/",
     ],
   },
   {

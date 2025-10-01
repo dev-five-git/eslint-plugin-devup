@@ -32,6 +32,8 @@ export default [
       '**/df/',
       '**/coverage/',
       '**/target/',
+      '**/venv/',
+      '**/.venv/',
     ],
   },
   ...devupUiEslintPlugin.configs.recommended,
