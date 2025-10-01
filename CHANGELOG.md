@@ -1,5 +1,11 @@
 # @devup/eslint-plugin
 
+## 2.0.8
+
+### Patch Changes
+
+- 9fdb989: Update ignore
+
 ## 2.0.7
 
 ### Patch Changes
