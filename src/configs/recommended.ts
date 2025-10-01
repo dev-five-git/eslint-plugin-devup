@@ -44,7 +44,8 @@ export default [
     {
       settings: {
         react: {
-          version: 'latest',
+          version: 'detect',
+          defaultVersion: '19',
         },
       },
       plugins: {

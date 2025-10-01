@@ -15887,7 +15887,8 @@ See https://tkdodo.eu/blog/react-query-fa-qs#2-the-queryclient-is-not-stable",
     },
     "settings": {
       "react": {
-        "version": "latest",
+        "defaultVersion": "19",
+        "version": "detect",
       },
     },
   },
