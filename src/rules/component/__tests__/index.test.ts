@@ -54,6 +54,11 @@ describe('component rule', () => {
         filename: 'src/app/404.tsx',
       },
       {
+        // in linux
+        code: '',
+        filename: '/app/apps/demo/src/A.tsx',
+      },
+      {
         code: 'export function TestComponent(){return <Row><Col></Col></Row>}',
         filename: 'src/components/test-component.tsx',
       },

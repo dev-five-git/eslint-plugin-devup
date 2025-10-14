@@ -1,4 +1,5 @@
 import { ESLintUtils } from '@typescript-eslint/utils'
+import { relative } from 'path'
 
 const createRule = ESLintUtils.RuleCreator(
   (name) =>
@@ -27,7 +28,7 @@ export const appPage = createRule({
     },
   },
   create(context) {
-    const filename = context.physicalFilename
+    const filename = relative(context.cwd, context.physicalFilename)
 
     if (!/src[/\\]app[/\\]/.test(filename)) return {}
     const type = /page\.[j|t]sx?$/.test(filename)
