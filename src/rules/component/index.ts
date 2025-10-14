@@ -1,4 +1,5 @@
 import { ESLintUtils, TSESTree } from '@typescript-eslint/utils'
+import { relative } from 'path'
 
 /**
  * 문자열을 파스칼 케이스로 변환합니다.
@@ -37,7 +38,7 @@ export const component = createRule({
       componentNameShouldBeFollowDirectoryStructure:
         '컴포넌트 이름은 디렉토리명 혹은 파일명을 따라야 합니다.',
       componentFileShouldExportComponent:
-        '컴포넌트 파일은 컴포넌트를 내보내야 합니다.',
+        '컴포넌트 파일은 컴포넌트를 내보내야 합니다. (컴포넌트명: {targetComponentName})',
     },
     type: 'problem',
     fixable: 'code',
@@ -47,7 +48,7 @@ export const component = createRule({
     },
   },
   create(context) {
-    const filename = context.physicalFilename
+    const filename = relative(context.cwd, context.physicalFilename)
 
     // 검사 대상이 아닌 파일은 빈 객체 반환
     const isIncluded = INCLUDE_PATTERNS.some((pattern) =>
@@ -155,6 +156,9 @@ export const component = createRule({
         context.report({
           node: program,
           messageId: 'componentFileShouldExportComponent',
+          data: {
+            targetComponentName,
+          },
           fix(fixer) {
             const hasContent = context.sourceCode.text.trim().length > 0
             const newline = hasContent ? '\n' : ''
