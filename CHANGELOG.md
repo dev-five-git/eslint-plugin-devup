@@ -1,5 +1,11 @@
 # @devup/eslint-plugin
 
+## 2.0.9
+
+### Patch Changes
+
+- 5302981: Support relative
+
 ## 2.0.8
 
 ### Patch Changes
