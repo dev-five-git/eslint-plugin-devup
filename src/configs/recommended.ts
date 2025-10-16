@@ -1,6 +1,7 @@
 import devupUiEslintPlugin from '@devup-ui/eslint-plugin'
 import js from '@eslint/js'
 import pluginQuery from '@tanstack/eslint-plugin-query'
+import type { Linter } from 'eslint'
 import * as mdx from 'eslint-plugin-mdx'
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
 // @ts-ignore
@@ -170,4 +171,4 @@ export default [
       '@typescript-eslint/no-empty-object-type': 'off',
     },
   },
-]
+] as Linter.Config[]
