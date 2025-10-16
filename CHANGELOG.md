@@ -1,5 +1,11 @@
 # @devup/eslint-plugin
 
+## 2.0.10
+
+### Patch Changes
+
+- 5f920c5: Update lib
+
 ## 2.0.9
 
 ### Patch Changes
