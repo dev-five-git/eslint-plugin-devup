@@ -1,5 +1,11 @@
 # @devup/eslint-plugin
 
+## 2.0.11
+
+### Patch Changes
+
+- 5e80332: Add ignore
+
 ## 2.0.10
 
 ### Patch Changes
