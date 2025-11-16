@@ -36,6 +36,7 @@ export default [
       '!vite.config.ts',
       '!**/.storybook/**',
       '**/__snapshots__/',
+      '**/.cache/',
     ],
   },
   ...devupUiEslintPlugin.configs.recommended,
