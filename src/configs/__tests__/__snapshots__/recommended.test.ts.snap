@@ -23,6 +23,7 @@ exports[`recommended > export recommended config 1`] = `
       "!vite.config.ts",
       "!**/.storybook/**",
       "**/__snapshots__/",
+      "**/.cache/",
     ],
   },
   {
