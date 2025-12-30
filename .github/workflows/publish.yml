@@ -24,9 +24,10 @@ jobs:
       - uses: oven-sh/setup-bun@v2
       - run: bun i
       - run: |
-          bun lint
           bun test
           bun build
+          # eslint project can not lint before build
+          bun lint
       - uses: changepacks/action@main
         id: changepacks
         with:
