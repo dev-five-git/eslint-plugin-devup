@@ -1,0 +1,7 @@
+{
+  "ignore": [],
+  "baseBranch": "main",
+  "latestPackage": "package.json",
+  "publish": {},
+  "updateOn": {}
+}

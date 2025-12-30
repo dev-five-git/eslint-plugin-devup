@@ -1,24 +1,22 @@
-# component interface
+# component-interface
 
 ## Description
 
-컴포넌트의 props 가 빈 object 일 때 interface 를 추가합니다.
+Adds an interface when component props is an empty object.
 
 ## Example
 
 ```tsx
+// Before
 export function Hello({}) {
   return <div>...</div>
 }
 ```
 
 ```tsx
+// After
 interface HelloProps {}
 export function Hello({}: HelloProps) {
   return <div>...</div>
 }
-```
-
-```
-
 ```

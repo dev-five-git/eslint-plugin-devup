@@ -12,17 +12,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
-        name: Install pnpm
-      - name: Install Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: 'pnpm'
-          registry-url: 'https://registry.npmjs.org'
-
-      - run: pnpm i
+      - uses: oven-sh/setup-bun@v2
+      - run: bun i
       - run: |
-          pnpm build
-          pnpm lint
-          pnpm test
+          bun test
+          bun run build
+          # eslint project can not lint before build
+          bun lint

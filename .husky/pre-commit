@@ -1,1 +1,2 @@
-pnpm lint-staged
+bun test
+bun lint

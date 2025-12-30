@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "types": ["vite/client", "vitest/importMeta", "vitest/globals"],
     "strict": true,
     "target": "ESNext",
     "declaration": true,
@@ -19,7 +18,8 @@
     "moduleResolution": "Bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
+    "emitDeclarationOnly": true,
+    "outDir": "dist",
     "baseUrl": ".",
     "jsx": "react-jsx"
   }
