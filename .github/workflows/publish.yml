@@ -11,27 +11,26 @@ jobs:
     concurrency:
         group: ${{ github.workflow }}-${{ github.ref }}
         cancel-in-progress: false
+    permissions:
+      # create pull request comments
+      pull-requests: write
+
+      # Actions > General > Workflow permissions for creating pull request
+      # Create brench to create pull request
+      contents: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
-        name: Install pnpm
-      - name: Install Node.js
-        uses: actions/setup-node@v4
-        with:
-          registry-url: "https://registry.npmjs.org"
-          node-version: 22
-          cache: 'pnpm'
-      - run: pnpm i
+      - uses: oven-sh/setup-bun@v2
+      - run: bun i
       - run: |
-          pnpm build
-          pnpm lint
-          pnpm test
-      - name: Create Release Pull Request or Publish to npm
-        id: changesets
-        uses: changesets/action@v1
+          bun lint
+          bun test
+          bun build
+      - uses: changepacks/action@main
+        id: changepacks
         with:
-          publish: pnpm publish --access=public
+          publish: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
