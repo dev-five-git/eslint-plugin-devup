@@ -8,7 +8,7 @@
     "test": "bun test",
     "lint": "eslint",
     "build": "tsc && bun build --target node src/index.ts --production --outfile dist/index.cjs --format cjs --packages external && bun build --target node src/index.ts --production --outfile dist/index.mjs --format esm --packages external && cp dist/index.d.ts dist/index.d.cts",
-    "prepare": "husky"
+    "prepare": "bun run husky"
   },
   "exports": {
     ".": {
