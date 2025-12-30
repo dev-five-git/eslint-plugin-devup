@@ -52,7 +52,6 @@
     "@typescript-eslint/utils": "^8.51",
     "eslint-plugin-eslint-plugin": "^7.2",
     "husky": "^9.1",
-    "lint-staged": "^16.2.7",
     "typescript": "^5.9",
     "vite": "^7.3",
     "vite-plugin-dts": "^4.5"
