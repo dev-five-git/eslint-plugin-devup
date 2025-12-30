@@ -16,6 +16,6 @@ jobs:
       - run: bun i
       - run: |
           bun test
-          bun build
+          bun run build
           # eslint project can not lint before build
           bun lint
