@@ -12,7 +12,7 @@ export const componentInterface = createRule({
     schema: [],
     messages: {
       componentPropsShouldHaveTypeAnnotationWhenEmptyObjectPattern:
-        '컴포넌트의 `props`가 비어있고 타입이 없을 경우 반드시 타입을 명시해야 합니다.',
+        'Component `props` must have type annotation when empty object pattern.',
     },
     type: 'problem',
     fixable: 'code',
@@ -48,7 +48,7 @@ export const componentInterface = createRule({
             fix(fixer) {
               return [
                 fixer.insertTextAfter(node.params[0], `:${funcName}Props`),
-                // 1줄 전
+                // Insert before the line
                 fixer.insertTextBefore(
                   node.parent.type === 'Program' ? node : node.parent,
                   `interface ${funcName}Props{}\n`,

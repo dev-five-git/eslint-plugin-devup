@@ -1,24 +1,24 @@
 # eslint-plugin-devup
 
-`devup`은 데브파이브에서 사용되는 더 빠르고 더 정확한 소프트웨어 개발을 위한 시스템입니다.
+`devup` is a system for faster and more accurate software development used at DevFive.
 
-`devup-eslint-plugin`은 빠르고 정확하게 소프트웨어 개발을 할 수 있도록 도움을 줍니다.
+`eslint-plugin-devup` helps you develop software quickly and accurately.
 
-각 룰에 대해서는 `src/rules` 디렉토리에 있는 파일을 참고하세요.
+For details on each rule, please refer to the files in the `src/rules` directory.
 
-사내에서 사용하다가 외부에 공개된 만큼, 회사 내의 시스템을 위한 룰도 존재합니다.
+As this was originally used internally and has now been made public, some rules exist for company-specific systems.
 
-원하는 룰만 사용할 수 있도록 `named export`로 모든 룰을 제공합니다.
+All rules are provided as `named exports` so you can use only the rules you want.
 
 ## Installation
 
 ```bash
-pnpm install --save-dev eslint-plugin-devup
+bun add -d eslint-plugin-devup
 ```
 
 ## Usage
 
-create `eslint.config.mjs` file in your project root.
+Create an `eslint.config.mjs` file in your project root.
 
 ```js
 import { configs } from 'eslint-plugin-devup'
@@ -31,15 +31,15 @@ export default configs.recommended
 Coverage score must be 100%.
 
 ```bash
-pnpm test
+bun test
 ```
 
 ## Contributing
 
-- 룰을 추가하거나 수정할 때는 `src/rules` 디렉토리에 파일을 추가하거나 수정합니다.
-- 룰을 추가하거나 수정할 때는 `README.md`에 룰에 대한 설명을 추가합니다.
+- When adding or modifying rules, add or modify files in the `src/rules` directory.
+- When adding or modifying rules, add a description of the rule in `README.md`.
 
-모든 의견과 기여를 환영합니다.
+All opinions and contributions are welcome.
 
 ## Join the Community
 

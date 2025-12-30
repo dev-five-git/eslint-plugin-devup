@@ -2,7 +2,7 @@
 
 ## Description
 
-app 폴더, 혹은 components 폴더에 있는 컴포넌트는 파일명 혹은 index.tsx 라면 폴더명에 따라서 이름을 지어야 합니다.
+Components in the app folder or components folder must be named according to the file name, or the folder name if it's an index.tsx file.
 
 ## Example
 

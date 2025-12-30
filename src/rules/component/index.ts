@@ -2,9 +2,9 @@ import { ESLintUtils, TSESTree } from '@typescript-eslint/utils'
 import { relative } from 'path'
 
 /**
- * 문자열을 파스칼 케이스로 변환합니다.
- * @param str 변환할 문자열
- * @returns 파스칼 케이스로 변환된 문자열
+ * Converts a string to PascalCase.
+ * @param str The string to convert
+ * @returns The PascalCase converted string
  */
 function toPascal(str: string) {
   return str
@@ -17,14 +17,14 @@ const createRule = ESLintUtils.RuleCreator(
     `https://github.com/dev-five-git/devup/tree/main/packages/eslint-plugin/src/rules/${name}`,
 )
 
-// 검사 제외 파일 패턴
+// File patterns to exclude from checking
 const EXCLUDE_PATTERNS = [
   /[\\/]utils[\\/]/,
   /[\\/](__)?tests?(__)?[\\/]/,
   /\.(test|css|stories)\.[jt]sx$/,
 ]
 
-// 검사 대상 파일 패턴
+// File patterns to include for checking
 const INCLUDE_PATTERNS = [
   /(src[/\\])?(app[/\\](?!.*[\\/]?(page|layout|404)\.[jt]sx$)|components[/\\]).*\.[jt]sx$/,
 ]
@@ -36,21 +36,20 @@ export const component = createRule({
     schema: [],
     messages: {
       componentNameShouldBeFollowDirectoryStructure:
-        '컴포넌트 이름은 디렉토리명 혹은 파일명을 따라야 합니다.',
+        'Component name should follow directory or file name.',
       componentFileShouldExportComponent:
-        '컴포넌트 파일은 컴포넌트를 내보내야 합니다. (컴포넌트명: {targetComponentName})',
+        'Component file should export a component. (Component name: {targetComponentName})',
     },
     type: 'problem',
     fixable: 'code',
     docs: {
-      description:
-        'required 컴포넌트 이름은 디렉터리 혹은 파일명을 따라야 합니다.',
+      description: 'Require component name to follow directory or file name.',
     },
   },
   create(context) {
     const filename = relative(context.cwd, context.physicalFilename)
 
-    // 검사 대상이 아닌 파일은 빈 객체 반환
+    // Return empty object for files not subject to checking
     const isIncluded = INCLUDE_PATTERNS.some((pattern) =>
       pattern.test(filename),
     )
@@ -62,7 +61,7 @@ export const component = createRule({
       return {}
     }
 
-    // 파일 경로에서 컴포넌트 이름 추출
+    // Extract component name from file path
     const targetComponentRegex = /([^/\\]+)[/\\]([^/\\]+)\.[jt]sx$/i.exec(
       filename,
     )!
@@ -76,9 +75,9 @@ export const component = createRule({
     let ok = false
 
     /**
-     * 선언이 타겟 컴포넌트 이름과 일치하는지 확인
-     * @param name 선언된 이름
-     * @returns 일치 여부
+     * Check if the declaration matches the target component name
+     * @param name The declared name
+     * @returns Whether it matches
      */
     const isTargetComponent = (name: string) => name === targetComponentName
 
@@ -89,7 +88,7 @@ export const component = createRule({
       ExportNamedDeclaration(namedExport) {
         if (ok) return
 
-        // index 파일에서 export 구문이 있는 경우 검사 통과
+        // Pass check if there are export specifiers in index file
         if (namedExport.specifiers.length && isIndex) {
           ok = true
           return
@@ -98,7 +97,7 @@ export const component = createRule({
         const declaration = namedExport.declaration
         if (!declaration) return
 
-        // 함수 선언 검사
+        // Check function declaration
         if (declaration.type === 'FunctionDeclaration' && declaration.id) {
           if (isTargetComponent(declaration.id.name)) {
             ok = true
@@ -107,7 +106,7 @@ export const component = createRule({
           exportFunc.push(declaration.id)
         }
 
-        // 클래스 선언 검사
+        // Check class declaration
         if (declaration.type === 'ClassDeclaration' && declaration.id) {
           if (isTargetComponent(declaration.id.name)) {
             ok = true
@@ -115,7 +114,7 @@ export const component = createRule({
           }
         }
 
-        // 변수 선언 검사 (화살표 함수, 함수 표현식 등)
+        // Check variable declaration (arrow functions, function expressions, etc.)
         if (declaration.type === 'VariableDeclaration') {
           for (const el of declaration.declarations) {
             if (el.id.type !== 'Identifier') continue
@@ -138,7 +137,7 @@ export const component = createRule({
       'Program:exit'(program) {
         if (ok) return
 
-        // 컴포넌트 이름이 일치하지 않는 경우 수정 제안
+        // Suggest fix when component name does not match
         if (exportFunc.length) {
           for (const exported of exportFunc) {
             context.report({
@@ -152,7 +151,7 @@ export const component = createRule({
           return
         }
 
-        // 컴포넌트를 내보내지 않는 경우 기본 컴포넌트 추가 제안
+        // Suggest adding default component when no component is exported
         context.report({
           node: program,
           messageId: 'componentFileShouldExportComponent',

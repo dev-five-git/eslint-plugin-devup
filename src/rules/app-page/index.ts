@@ -13,18 +13,17 @@ export const appPage = createRule({
     schema: [],
     messages: {
       pageOrLayoutComponentShouldDefaultExport:
-        '페이지나 레이아웃 컴포넌트는 반드시 `export default`로 내보내야 합니다.',
-
+        'Page or layout component must be exported with `export default`.',
       nameOfPageOrLayoutComponentShouldHaveSuffix:
-        '페이지나 레이아웃 컴포넌트의 이름은 반드시 `Page`나 `Layout`으로 끝나야 합니다.',
+        'Page or layout component name must end with `Page` or `Layout`.',
       pathParamsShouldExist:
-        '경로 변수를 사용할 수 있을 경우 `params`는 반드시 존재해야 합니다.',
+        '`params` must exist when path parameters are available.',
     },
     type: 'problem',
     fixable: 'code',
     docs: {
       description:
-        'required 페이지나 레이아웃 컴포넌트는 반드시 export default로 내보내야 합니다.',
+        'Require page or layout component to be exported with export default.',
     },
   },
   create(context) {
@@ -42,8 +41,8 @@ export const appPage = createRule({
 
     const functionSuffix = type === 'layout' ? 'Layout' : 'Page'
     const pathParams = filename.match(/\[.*?]/g) ?? []
+    // Ignore when only locale param exists
     const onlyLocale = pathParams.length === 1 && pathParams[0] === '[locale]'
-    // locale 만 있을 경우 무시합니다.
 
     let ok = false
     return {
@@ -91,7 +90,7 @@ export const appPage = createRule({
         return
       },
       'Program:exit'(program) {
-        // 소스코드가 비어있으면 자동생성
+        // Auto-generate if source code is empty
         if (ok) return
         context.report({
           node: program,

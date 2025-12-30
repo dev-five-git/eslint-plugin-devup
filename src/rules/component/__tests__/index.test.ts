@@ -136,12 +136,12 @@ ruleTester.run('component rule', component, {
       filename: 'src/components/hello.tsx',
     },
     {
-      // ClassDeclaration이 파일명과 일치하는 경우
+      // ClassDeclaration matches file name
       code: 'export class Hello extends React.Component{render(){return <></>}}',
       filename: 'src/components/hello.tsx',
     },
     {
-      // ClassDeclaration이 디렉토리명과 일치하는 경우 (index 파일)
+      // ClassDeclaration matches directory name (index file)
       code: 'export class MyComponent extends React.Component{render(){return <></>}}',
       filename: 'src/components/my-component/index.tsx',
     },
@@ -151,12 +151,12 @@ ruleTester.run('component rule', component, {
       filename: 'src/components/hello.tsx',
     },
     {
-      // named export with specifiers in non-index file (declaration이 없는 경우)
+      // named export with specifiers in non-index file (no declaration)
       code: 'export function Hello(){return <></>}\nexport { b } from "./b"',
       filename: 'src/components/hello.tsx',
     },
     {
-      // ClassDeclaration without matching name (다른 export가 통과)
+      // ClassDeclaration without matching name (other export passes)
       code: 'export class Wrong extends React.Component{render(){return <></>}}\nexport function Hello(){return <></>}',
       filename: 'src/components/hello.tsx',
     },
