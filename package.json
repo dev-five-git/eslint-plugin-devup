@@ -7,16 +7,17 @@
   "scripts": {
     "test": "bun test",
     "lint": "eslint",
-    "build": "tsc && vite build",
-    "changeset": "changeset",
+    "build": "tsc && bun build --target node src/index.ts --production --outfile dist/index.cjs --format cjs --packages external && bun build --target node src/index.ts --production --outfile dist/index.mjs --format esm --packages external",
     "prepare": "husky"
   },
   "exports": {
     ".": {
-      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
       "require": "./dist/index.cjs"
     }
   },
+  "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
@@ -47,7 +48,6 @@
     "@changesets/cli": "^2.29",
     "@types/bun": "^1.3",
     "@types/eslint": "^9.6",
-    "@types/eslint__js": "^9.14",
     "@typescript-eslint/rule-tester": "^8.51",
     "@typescript-eslint/utils": "^8.51",
     "eslint-plugin-eslint-plugin": "^7.2",

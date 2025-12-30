@@ -1,6 +1,6 @@
 import eslintPlugin from 'eslint-plugin-eslint-plugin'
 
-import { configs } from './dist/index.js'
+import { configs } from './dist/index.mjs'
 export default [
   ...configs.recommended,
   {
