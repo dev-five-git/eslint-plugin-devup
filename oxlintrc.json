@@ -60,6 +60,8 @@
     "devup/ui/no-useless-tailing-nulls": "error",
     "devup/ui/style-order-range": "error",
 
+    "devup/mdx/remark": "error",
+
     "simple-import-sort/imports": "error",
     "simple-import-sort/exports": "error",
 

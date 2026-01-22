@@ -11,7 +11,7 @@
 // @ts-ignore - named export for rules
 import { rules as devupUiRules } from '@devup-ui/eslint-plugin'
 import type { Rule } from 'eslint'
-// @ts-ignore
+import { rules as mdxRules } from 'eslint-plugin-mdx'
 import eslintPluginPrettier from 'eslint-plugin-prettier'
 
 import { appPage, component, componentInterface } from './rules'
@@ -49,13 +49,16 @@ function toKebabCase(str: string): string {
 }
 
 /**
- * Build wrapped devup-ui rules with "ui/" prefix
+ * Build wrapped rules from external plugin with prefix
  */
-function buildDevupUiRules(): Record<string, Rule.RuleModule> {
+function buildWrappedRules(
+  externalRules: Record<string, unknown>,
+  prefix: string,
+): Record<string, Rule.RuleModule> {
   const rules: Record<string, Rule.RuleModule> = {}
-  for (const [name, rule] of Object.entries(devupUiRules)) {
+  for (const [name, rule] of Object.entries(externalRules)) {
     const kebabName = toKebabCase(name)
-    rules[`ui/${kebabName}`] = wrapRuleForOxlint(
+    rules[`${prefix}/${kebabName}`] = wrapRuleForOxlint(
       rule as unknown as Rule.RuleModule,
     )
   }
@@ -80,7 +83,10 @@ const plugin = {
     prettier: wrapRuleForOxlint(eslintPluginPrettier.rules!.prettier),
 
     // @devup-ui/eslint-plugin rules (auto-wrapped for oxlint compatibility)
-    ...buildDevupUiRules(),
+    ...buildWrappedRules(devupUiRules, 'ui'),
+
+    // eslint-plugin-mdx rules (auto-wrapped for oxlint compatibility)
+    ...buildWrappedRules(mdxRules, 'mdx'),
   },
 }
 

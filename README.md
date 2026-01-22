@@ -18,12 +18,24 @@ bun add -d eslint-plugin-devup
 
 ## Usage
 
+### ESLint
+
 Create an `eslint.config.mjs` file in your project root.
 
 ```js
 import { configs } from "eslint-plugin-devup";
 
 export default configs.recommended;
+```
+
+### Oxlint
+
+Create an `.oxlintrc.json` file in your project root.
+
+```json
+{
+  "extends": ["eslint-plugin-devup/oxlintrc"]
+}
 ```
 
 ## Test
