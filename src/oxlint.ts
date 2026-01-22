@@ -10,9 +10,15 @@
 
 // @ts-ignore - named export for rules
 import { rules as devupUiRules } from '@devup-ui/eslint-plugin'
+// @ts-ignore
+import tanstackQueryPlugin from '@tanstack/eslint-plugin-query'
 import type { Rule } from 'eslint'
 import { rules as mdxRules } from 'eslint-plugin-mdx'
 import eslintPluginPrettier from 'eslint-plugin-prettier'
+// @ts-ignore
+import simpleImportSortPlugin from 'eslint-plugin-simple-import-sort'
+// @ts-ignore
+import unusedImportsPlugin from 'eslint-plugin-unused-imports'
 
 import { appPage, component, componentInterface } from './rules'
 
@@ -87,6 +93,15 @@ const plugin = {
 
     // eslint-plugin-mdx rules (auto-wrapped for oxlint compatibility)
     ...buildWrappedRules(mdxRules, 'mdx'),
+
+    // eslint-plugin-simple-import-sort rules (auto-wrapped for oxlint compatibility)
+    ...buildWrappedRules(simpleImportSortPlugin.rules!, 'simple-import-sort'),
+
+    // eslint-plugin-unused-imports rules (auto-wrapped for oxlint compatibility)
+    ...buildWrappedRules(unusedImportsPlugin.rules!, 'unused-imports'),
+
+    // @tanstack/eslint-plugin-query rules (auto-wrapped for oxlint compatibility)
+    ...buildWrappedRules(tanstackQueryPlugin.rules!, 'query'),
   },
 }
 

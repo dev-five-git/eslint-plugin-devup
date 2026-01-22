@@ -8,14 +8,13 @@
     "jsx-a11y",
     "nextjs",
     "promise",
-    "oxc"
+    "oxc",
+    "eslint",
+    "node",
+    "jsdoc",
+    "react-perf"
   ],
-  "jsPlugins": [
-    "eslint-plugin-devup/oxlint",
-    "eslint-plugin-simple-import-sort",
-    "eslint-plugin-unused-imports",
-    "@tanstack/eslint-plugin-query"
-  ],
+  "jsPlugins": ["eslint-plugin-devup/oxlint"],
   "env": {
     "browser": true,
     "es2024": true,
@@ -62,13 +61,13 @@
 
     "devup/mdx/remark": "error",
 
-    "simple-import-sort/imports": "error",
-    "simple-import-sort/exports": "error",
+    "devup/simple-import-sort/imports": "error",
+    "devup/simple-import-sort/exports": "error",
 
-    "unused-imports/no-unused-imports": "error",
-    "unused-imports/no-unused-vars": "off",
+    "devup/unused-imports/no-unused-imports": "error",
+    "devup/unused-imports/no-unused-vars": "off",
 
-    "@tanstack/query/exhaustive-deps": "error",
+    "devup/query/exhaustive-deps": "error",
 
     "no-console": ["error", { "allow": ["info", "debug", "warn", "error"] }],
     "no-constant-condition": ["error", { "checkLoops": false }],

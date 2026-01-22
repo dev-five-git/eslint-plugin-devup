@@ -34,7 +34,7 @@ Create an `.oxlintrc.json` file in your project root.
 
 ```json
 {
-  "extends": ["eslint-plugin-devup/oxlintrc"]
+  "extends": ["node_modules/eslint-plugin-devup/oxlintrc.json"]
 }
 ```
 
