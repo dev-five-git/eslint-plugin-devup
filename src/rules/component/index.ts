@@ -33,7 +33,7 @@ export const component = createRule({
     type: 'problem',
     fixable: 'code',
     docs: {
-      description: 'Require component name to follow directory or file name.',
+      description: 'require component name to follow directory or file name.',
     },
   },
   create(context) {

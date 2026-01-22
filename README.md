@@ -21,9 +21,9 @@ bun add -d eslint-plugin-devup
 Create an `eslint.config.mjs` file in your project root.
 
 ```js
-import { configs } from 'eslint-plugin-devup'
+import { configs } from "eslint-plugin-devup";
 
-export default configs.recommended
+export default configs.recommended;
 ```
 
 ## Test

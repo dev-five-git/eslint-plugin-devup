@@ -6,8 +6,9 @@
   "type": "module",
   "scripts": {
     "test": "bun test",
-    "lint": "eslint",
-    "build": "tsc && bun build --target node src/index.ts --production --outfile dist/index.cjs --format cjs --packages external && bun build --target node src/index.ts --production --outfile dist/index.mjs --format esm --packages external && cp dist/index.d.ts dist/index.d.cts",
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix",
+    "build": "tsc && bun build --target node src/index.ts --production --outfile dist/index.cjs --format cjs --packages external && bun build --target node src/index.ts --production --outfile dist/index.mjs --format esm --packages external && bun build --target node src/oxlint.ts --production --outfile dist/oxlint.mjs --format esm --packages external && cp dist/index.d.ts dist/index.d.cts",
     "prepare": "bun run husky"
   },
   "exports": {
@@ -20,11 +21,17 @@
         "types": "./dist/index.d.ts",
         "default": "./dist/index.cjs"
       }
-    }
+    },
+    "./oxlint": {
+      "import": "./dist/oxlint.mjs",
+      "default": "./dist/oxlint.mjs"
+    },
+    "./oxlintrc": "./oxlintrc.json"
   },
   "types": "./dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "oxlintrc.json"
   ],
   "keywords": [
     "eslint"
@@ -44,7 +51,7 @@
     "eslint-plugin-simple-import-sort": ">=12",
     "eslint-plugin-unused-imports": ">=4",
     "prettier": ">=3",
-    "typescript-eslint": ">=8.51"
+    "typescript-eslint": ">=8.53"
   },
   "peerDependencies": {
     "eslint": "*"
@@ -53,10 +60,11 @@
     "@changesets/cli": "^2.29",
     "@types/bun": "^1.3",
     "@types/eslint": "^9.6",
-    "@typescript-eslint/rule-tester": "^8.51",
-    "@typescript-eslint/utils": "^8.51",
-    "eslint-plugin-eslint-plugin": "^7.2",
+    "@typescript-eslint/rule-tester": "^8.53",
+    "@typescript-eslint/utils": "^8.53",
+    "eslint-plugin-eslint-plugin": "^7.3",
     "husky": "^9.1",
+    "oxlint": "^1.41.0",
     "typescript": "^5.9",
     "vite": "^7.3",
     "vite-plugin-dts": "^4.5"
