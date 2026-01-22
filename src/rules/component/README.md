@@ -9,13 +9,13 @@ Components in the app folder or components folder must be named according to the
 ```jsx
 // app/hello/index.tsx
 export function Hello() {
-  return <div>...</div>
+  return <div>...</div>;
 }
 ```
 
 ```jsx
 // components/app-wrapper/index.tsx
 export function AppWrapper() {
-  return <div>...</div>
+  return <div>...</div>;
 }
 ```

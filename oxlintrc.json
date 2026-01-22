@@ -1,0 +1,202 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oxc-project/oxc/main/npm/oxlint/configuration_schema.json",
+  "plugins": [
+    "react",
+    "typescript",
+    "unicorn",
+    "import",
+    "jsx-a11y",
+    "nextjs",
+    "promise",
+    "oxc"
+  ],
+  "jsPlugins": [
+    "eslint-plugin-devup/oxlint",
+    "eslint-plugin-simple-import-sort",
+    "eslint-plugin-unused-imports",
+    "@tanstack/eslint-plugin-query"
+  ],
+  "env": {
+    "browser": true,
+    "es2024": true,
+    "node": true
+  },
+
+  "ignorePatterns": [
+    "**/node_modules/",
+    "**/build/",
+    "**/storybook-static/",
+    "**/dist/",
+    "**/next-env.d.ts",
+    "**/out/",
+    "**/public/",
+    "**/df/",
+    "**/coverage/",
+    "**/target/",
+    "**/venv/",
+    "**/__snapshots__/",
+    "**/.*/",
+    "!**/src/**",
+    "!vite.config.ts"
+  ],
+  "rules": {
+    "devup/app-page": "error",
+    "devup/component": "error",
+    "devup/component-interface": "error",
+
+    "devup/prettier": [
+      "error",
+      {
+        "endOfLine": "auto",
+        "trailingComma": "all",
+        "singleQuote": true,
+        "semi": false
+      }
+    ],
+
+    "devup/ui/css-utils-literal-only": "error",
+    "devup/ui/no-duplicate-value": "error",
+    "devup/ui/no-useless-responsive": "error",
+    "devup/ui/no-useless-tailing-nulls": "error",
+    "devup/ui/style-order-range": "error",
+
+    "devup/mdx/remark": "error",
+
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
+
+    "unused-imports/no-unused-imports": "error",
+    "unused-imports/no-unused-vars": "off",
+
+    "@tanstack/query/exhaustive-deps": "error",
+
+    "no-console": ["error", { "allow": ["info", "debug", "warn", "error"] }],
+    "no-constant-condition": ["error", { "checkLoops": false }],
+    "no-debugger": "error",
+    "no-empty": "error",
+    "no-empty-pattern": "error",
+    "no-trailing-spaces": "error",
+    "no-unused-vars": [
+      "error",
+      {
+        "args": "all",
+        "argsIgnorePattern": "^_",
+        "caughtErrors": "all",
+        "caughtErrorsIgnorePattern": "^_",
+        "destructuredArrayIgnorePattern": "^_",
+        "varsIgnorePattern": "^_",
+        "ignoreRestSiblings": true
+      }
+    ],
+    "no-unused-expressions": [
+      "error",
+      {
+        "allowShortCircuit": true,
+        "allowTernary": true
+      }
+    ],
+    "spaced-comment": ["error", "always", { "markers": ["/"] }],
+
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": "off",
+    "react/jsx-key": "error",
+    "react/jsx-no-comment-textnodes": "error",
+    "react/jsx-no-duplicate-props": "error",
+    "react/jsx-no-target-blank": "error",
+    "react/jsx-no-undef": "error",
+    "react/jsx-curly-brace-presence": "error",
+    "react/jsx-sort-props": [
+      "error",
+      {
+        "callbacksLast": false,
+        "shorthandFirst": false,
+        "shorthandLast": false,
+        "ignoreCase": false,
+        "noSortAlphabetically": false,
+        "reservedFirst": true
+      }
+    ],
+    "react/no-children-prop": "error",
+    "react/no-danger-with-children": "error",
+    "react/no-direct-mutation-state": "error",
+    "react/no-find-dom-node": "error",
+    "react/no-is-mounted": "error",
+    "react/no-render-return-value": "error",
+    "react/no-string-refs": "error",
+    "react/no-unescaped-entities": "error",
+    "react/no-unknown-property": "error",
+    "react/sort-default-props": "error",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": [
+      "warn",
+      {
+        "additionalHooks": "useSafeEffect"
+      }
+    ],
+
+    "typescript/explicit-module-boundary-types": "off",
+    "typescript/no-explicit-any": "off",
+    "typescript/no-var-requires": "off",
+    "typescript/ban-ts-comment": "off",
+    "typescript/no-duplicate-enum-values": "error",
+    "typescript/no-empty-object-type": "error",
+    "typescript/no-extra-non-null-assertion": "error",
+    "typescript/no-misused-new": "error",
+    "typescript/no-namespace": "error",
+    "typescript/no-non-null-asserted-optional-chain": "error",
+    "typescript/no-require-imports": "error",
+    "typescript/no-this-alias": "error",
+    "typescript/no-unnecessary-type-constraint": "error",
+    "typescript/no-unsafe-declaration-merging": "error",
+    "typescript/no-unsafe-function-type": "error",
+    "typescript/no-wrapper-object-types": "error",
+    "typescript/prefer-as-const": "error",
+    "typescript/prefer-namespace-keyword": "error",
+    "typescript/triple-slash-reference": "error",
+
+    "import/no-default-export": "off",
+
+    "jsx-a11y/alt-text": "error",
+    "jsx-a11y/anchor-has-content": "error",
+    "jsx-a11y/anchor-is-valid": "error",
+    "jsx-a11y/click-events-have-key-events": "error",
+    "jsx-a11y/heading-has-content": "error",
+    "jsx-a11y/html-has-lang": "error",
+    "jsx-a11y/lang": "error",
+    "jsx-a11y/no-autofocus": "warn",
+    "jsx-a11y/no-redundant-roles": "error",
+    "jsx-a11y/role-has-required-aria-props": "error",
+    "jsx-a11y/role-supports-aria-props": "error",
+
+    "nextjs/no-html-link-for-pages": "error",
+    "nextjs/no-img-element": "warn",
+    "nextjs/no-sync-scripts": "error",
+
+    "promise/no-new-statics": "error",
+    "promise/valid-params": "error"
+  },
+  "overrides": [
+    {
+      "files": ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts"],
+      "rules": {
+        "no-var": "error",
+        "prefer-rest-params": "error",
+        "prefer-spread": "error"
+      }
+    },
+    {
+      "files": ["**/*.test-d.{ts,tsx}"],
+      "rules": {
+        "no-unused-expressions": "off"
+      }
+    },
+    {
+      "files": ["**/*.{md,mdx}"],
+      "rules": {
+        "react/jsx-no-undef": "off",
+        "no-empty-pattern": "off",
+        "typescript/no-empty-object-type": "off"
+      }
+    }
+  ]
+}

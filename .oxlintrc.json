@@ -1,0 +1,19 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oxc-project/oxc/main/npm/oxlint/configuration_schema.json",
+  "extends": ["./oxlintrc.json"],
+  "jsPlugins": [
+    "./dist/oxlint.mjs",
+    "eslint-plugin-simple-import-sort",
+    "eslint-plugin-unused-imports",
+    "@tanstack/eslint-plugin-query",
+    "eslint-plugin-eslint-plugin"
+  ],
+  "rules": {
+    "eslint-plugin/require-meta-docs-description": "error",
+    "eslint-plugin/require-meta-type": "error",
+    "eslint-plugin/no-unused-message-ids": "error",
+    "eslint-plugin/no-missing-message-ids": "error",
+    "eslint-plugin/prefer-message-ids": "error",
+    "eslint-plugin/no-deprecated-report-api": "error"
+  }
+}

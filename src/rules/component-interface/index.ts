@@ -25,7 +25,7 @@ export const componentInterface = createRule({
     fixable: 'code',
     docs: {
       description:
-        'required type annotation for component props when empty object pattern',
+        'require type annotation for component props when empty object pattern.',
     },
   },
   create(context) {

@@ -32,7 +32,7 @@ export const appPage = createRule({
     fixable: 'code',
     docs: {
       description:
-        'Require page or layout component to be exported with export default.',
+        'require page or layout component to be exported with export default',
     },
   },
   create(context) {

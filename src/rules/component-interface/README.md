@@ -9,7 +9,7 @@ Adds an interface when component props is an empty object.
 ```tsx
 // Before
 export function Hello({}) {
-  return <div>...</div>
+  return <div>...</div>;
 }
 ```
 
@@ -17,6 +17,6 @@ export function Hello({}) {
 // After
 interface HelloProps {}
 export function Hello({}: HelloProps) {
-  return <div>...</div>
+  return <div>...</div>;
 }
 ```
