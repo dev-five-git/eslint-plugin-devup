@@ -19,8 +19,11 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "emitDeclarationOnly": true,
+    "rootDir": "src",
     "outDir": "dist",
-    "baseUrl": ".",
+    "types": ["bun"],
     "jsx": "react-jsx"
-  }
+  },
+  "include": ["src"],
+  "exclude": ["src/**/__tests__/**"]
 }

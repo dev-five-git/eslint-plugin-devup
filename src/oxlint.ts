@@ -16,6 +16,8 @@ import type { Rule } from 'eslint'
 import { rules as mdxRules } from 'eslint-plugin-mdx'
 import eslintPluginPrettier from 'eslint-plugin-prettier'
 // @ts-ignore
+import reactPlugin from 'eslint-plugin-react'
+// @ts-ignore
 import simpleImportSortPlugin from 'eslint-plugin-simple-import-sort'
 // @ts-ignore
 import unusedImportsPlugin from 'eslint-plugin-unused-imports'
@@ -102,6 +104,15 @@ const plugin = {
 
     // @tanstack/eslint-plugin-query rules (auto-wrapped for oxlint compatibility)
     ...buildWrappedRules(tanstackQueryPlugin.rules!, 'query'),
+
+    // eslint-plugin-react rules not natively supported by oxlint
+    'react/prop-types': wrapRuleForOxlint(reactPlugin.rules!['prop-types']),
+    'react/jsx-sort-props': wrapRuleForOxlint(
+      reactPlugin.rules!['jsx-sort-props'],
+    ),
+    'react/sort-default-props': wrapRuleForOxlint(
+      reactPlugin.rules!['sort-default-props'],
+    ),
   },
 }
 
