@@ -27,23 +27,15 @@ import { appPage, component, componentInterface } from './rules'
 /**
  * Wrap a rule to handle unsupported context properties in oxlint
  * (e.g., context.parserPath throws in oxlint)
+ * Uses Object.create for O(1) property lookup instead of Proxy trap on every access.
  */
 function wrapRuleForOxlint(rule: Rule.RuleModule): Rule.RuleModule {
   return {
     ...rule,
     create(context) {
-      const proxiedContext = new Proxy(context, {
-        get(target, prop) {
-          // Return undefined for unsupported properties instead of throwing
-          if (prop === 'parserPath') {
-            return undefined
-          }
-          // Pass through all other properties directly to preserve Proxy invariants
-          // (non-configurable properties must return their actual value)
-          return target[prop as keyof typeof target]
-        },
-      })
-      return rule.create(proxiedContext)
+      const wrapped = Object.create(context) as typeof context
+      Object.defineProperty(wrapped, 'parserPath', { value: undefined })
+      return rule.create(wrapped)
     },
   }
 }
