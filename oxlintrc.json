@@ -68,13 +68,19 @@
     "devup/unused-imports/no-unused-vars": "off",
 
     "devup/query/exhaustive-deps": "error",
+    "devup/query/stable-query-client": "error",
+    "devup/query/no-rest-destructuring": "error",
+    "devup/query/no-unstable-deps": "error",
+    "devup/query/infinite-query-property-order": "error",
+    "devup/query/no-void-query-fn": "error",
+    "devup/query/mutation-property-order": "error",
+    "devup/query/prefer-query-options": "error",
 
     "no-console": ["error", { "allow": ["info", "debug", "warn", "error"] }],
     "no-constant-condition": ["error", { "checkLoops": false }],
     "no-debugger": "error",
     "no-empty": "error",
     "no-empty-pattern": "error",
-    "no-trailing-spaces": "error",
     "no-unused-vars": [
       "error",
       {
@@ -94,17 +100,16 @@
         "allowTernary": true
       }
     ],
-    "spaced-comment": ["error", "always", { "markers": ["/"] }],
 
     "react/react-in-jsx-scope": "off",
-    "react/prop-types": "off",
+    "devup/react/prop-types": "off",
     "react/jsx-key": "error",
     "react/jsx-no-comment-textnodes": "error",
     "react/jsx-no-duplicate-props": "error",
     "react/jsx-no-target-blank": "error",
     "react/jsx-no-undef": "error",
     "react/jsx-curly-brace-presence": "error",
-    "react/jsx-sort-props": [
+    "devup/react/jsx-sort-props": [
       "error",
       {
         "callbacksLast": false,
@@ -124,7 +129,7 @@
     "react/no-string-refs": "error",
     "react/no-unescaped-entities": "error",
     "react/no-unknown-property": "error",
-    "react/sort-default-props": "error",
+    "devup/react/sort-default-props": "error",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": [
       "warn",

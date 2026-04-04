@@ -1,10 +1,13 @@
 import { ESLintUtils, TSESTree } from '@typescript-eslint/utils'
 import { relative } from 'path'
 
+const KEBAB_SNAKE_PATTERN = /[-_](.)/g
+const FIRST_LOWER_PATTERN = /^[a-z]/
+
 function toPascal(str: string) {
   return str
-    .replace(/[-_](.)/g, (_, c: string) => c.toUpperCase())
-    .replace(/^[a-z]/, (c) => c.toUpperCase())
+    .replace(KEBAB_SNAKE_PATTERN, (_, c: string) => c.toUpperCase())
+    .replace(FIRST_LOWER_PATTERN, (c) => c.toUpperCase())
 }
 
 const createRule = ESLintUtils.RuleCreator(
