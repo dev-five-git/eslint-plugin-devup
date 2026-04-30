@@ -48,25 +48,24 @@
     "eslint-plugin-prettier": ">=5",
     "eslint-plugin-react": ">=7",
     "eslint-plugin-react-hooks": ">=7",
-    "eslint-plugin-simple-import-sort": ">=12",
+    "eslint-plugin-simple-import-sort": ">=13",
     "eslint-plugin-unused-imports": ">=4",
     "prettier": ">=3",
-    "typescript-eslint": ">=8.58"
+    "typescript-eslint": ">=8.59"
   },
   "peerDependencies": {
     "eslint": "*"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.30",
     "@types/bun": "^1.3",
     "@types/eslint": "^9.6",
-    "@typescript-eslint/rule-tester": "^8.58",
-    "@typescript-eslint/utils": "^8.58",
+    "@typescript-eslint/rule-tester": "^8.59",
+    "@typescript-eslint/utils": "^8.59",
     "eslint-plugin-eslint-plugin": "^7.3",
     "husky": "^9.1",
-    "oxlint": "^1.58.0",
+    "oxlint": "^1.62.0",
     "typescript": "^6.0",
     "vite": "^8.0",
-    "vite-plugin-dts": "^4.5"
+    "vite-plugin-dts": "^5.0"
   }
 }
