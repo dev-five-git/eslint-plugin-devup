@@ -8,6 +8,7 @@
     "sourceMap": true,
     "useDefineForClassFields": true,
     "allowJs": false,
+    "allowImportingTsExtensions": true,
     "skipLibCheck": true,
     "noFallthroughCasesInSwitch": true,
     "esModuleInterop": true,

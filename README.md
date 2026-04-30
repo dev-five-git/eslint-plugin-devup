@@ -30,12 +30,30 @@ export default configs.recommended;
 
 ### Oxlint
 
-Create an `.oxlintrc.json` file in your project root.
+Create an `oxlint.config.ts` file in your project root.
 
-```json
-{
-  "extends": ["node_modules/eslint-plugin-devup/oxlintrc.json"]
-}
+```ts
+import devupConfig from 'eslint-plugin-devup/oxlint-config'
+
+export default devupConfig
+```
+
+Use the `eslint-plugin-devup/oxlint-config` export instead of importing a file path from `node_modules`. The package only publishes `dist`, and this export points to the built config while still generating rules dynamically from the installed plugin versions.
+
+`oxlint.config.ts` is loaded by Oxlint through Node.js, so CI should use the latest Node.js when running `oxlint`.
+
+If you need project-specific overrides, extend the config object.
+
+```ts
+import { defineConfig } from 'oxlint'
+import devupConfig from 'eslint-plugin-devup/oxlint-config'
+
+export default defineConfig({
+  extends: [devupConfig],
+  rules: {
+    'no-console': 'off',
+  },
+})
 ```
 
 ## Test

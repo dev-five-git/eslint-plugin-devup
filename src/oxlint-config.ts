@@ -1,0 +1,244 @@
+import { defineConfig, type DummyRule, type OxlintConfig } from 'oxlint'
+
+import oxlintPlugin from './oxlint.ts'
+
+type RuleConfig = DummyRule
+
+type CreateOxlintConfigOptions = {
+  jsPluginSpecifier?: string
+  additionalRuleNames?: string[]
+}
+
+const prettierOptions = {
+  endOfLine: 'auto',
+  trailingComma: 'all',
+  singleQuote: true,
+  semi: false,
+}
+
+const jsxSortPropsOptions = {
+  callbacksLast: false,
+  shorthandFirst: false,
+  shorthandLast: false,
+  ignoreCase: false,
+  noSortAlphabetically: false,
+  reservedFirst: true,
+}
+
+const devupRuleOverrides: Record<string, RuleConfig> = {
+  prettier: ['error', prettierOptions],
+  'unused-imports/no-unused-vars': 'off',
+  'react/prop-types': 'off',
+  'react/jsx-sort-props': ['error', jsxSortPropsOptions],
+}
+
+const devupRuleGroups = [
+  ['app-page', 'component', 'component-interface'],
+  ['prettier'],
+  'ui/',
+  'mdx/',
+  'simple-import-sort/',
+  'unused-imports/',
+  'query/',
+  'react/',
+] as const
+
+function getRuleConfig(ruleName: string): RuleConfig {
+  return devupRuleOverrides[ruleName] ?? 'error'
+}
+
+function buildDevupRules(
+  additionalRuleNames: string[] = [],
+): Record<string, RuleConfig> {
+  const exportedRuleNames = [
+    ...Object.keys(oxlintPlugin.rules),
+    ...additionalRuleNames,
+  ]
+  const remainingRuleNames = new Set(exportedRuleNames)
+  const rules: Record<string, RuleConfig> = {}
+
+  for (const group of devupRuleGroups) {
+    const groupRuleNames =
+      typeof group === 'string'
+        ? exportedRuleNames
+            .filter((ruleName) => ruleName.startsWith(group))
+            .sort((left, right) => left.localeCompare(right))
+        : group.filter((ruleName) => remainingRuleNames.has(ruleName))
+
+    for (const ruleName of groupRuleNames) {
+      rules[`devup/${ruleName}`] = getRuleConfig(ruleName)
+      remainingRuleNames.delete(ruleName)
+    }
+  }
+
+  for (const ruleName of [...remainingRuleNames].sort((left, right) =>
+    left.localeCompare(right),
+  )) {
+    rules[`devup/${ruleName}`] = getRuleConfig(ruleName)
+  }
+
+  return rules
+}
+
+export function createOxlintConfig(
+  options: CreateOxlintConfigOptions = {},
+): OxlintConfig {
+  return defineConfig({
+    plugins: [
+      'react',
+      'typescript',
+      'unicorn',
+      'import',
+      'jsx-a11y',
+      'nextjs',
+      'promise',
+      'oxc',
+      'eslint',
+      'node',
+      'jsdoc',
+      'react-perf',
+    ],
+    jsPlugins: [options.jsPluginSpecifier ?? 'eslint-plugin-devup/oxlint'],
+    env: {
+      browser: true,
+      es2024: true,
+      node: true,
+    },
+    ignorePatterns: [
+      '**/node_modules/',
+      '**/build/',
+      '**/storybook-static/',
+      '**/dist/',
+      '**/next-env.d.ts',
+      '**/out/',
+      '**/public/',
+      '**/df/',
+      '**/coverage/',
+      '**/target/',
+      '**/venv/',
+      '**/__snapshots__/',
+      '**/.*/',
+      '!**/src/**',
+      '!vite.config.ts',
+    ],
+    rules: {
+      ...buildDevupRules(options.additionalRuleNames),
+
+      'no-console': ['error', { allow: ['info', 'debug', 'warn', 'error'] }],
+      'no-constant-condition': ['error', { checkLoops: false }],
+      'no-debugger': 'error',
+      'no-empty': 'error',
+      'no-empty-pattern': 'error',
+      'no-unused-vars': [
+        'error',
+        {
+          args: 'all',
+          argsIgnorePattern: '^_',
+          caughtErrors: 'all',
+          caughtErrorsIgnorePattern: '^_',
+          destructuredArrayIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+          ignoreRestSiblings: true,
+        },
+      ],
+      'no-unused-expressions': [
+        'error',
+        {
+          allowShortCircuit: true,
+          allowTernary: true,
+        },
+      ],
+
+      'react/react-in-jsx-scope': 'off',
+      'react/jsx-key': 'error',
+      'react/jsx-no-comment-textnodes': 'error',
+      'react/jsx-no-duplicate-props': 'error',
+      'react/jsx-no-target-blank': 'error',
+      'react/jsx-no-undef': 'error',
+      'react/jsx-curly-brace-presence': 'error',
+      'react/no-children-prop': 'error',
+      'react/no-danger-with-children': 'error',
+      'react/no-direct-mutation-state': 'error',
+      'react/no-find-dom-node': 'error',
+      'react/no-is-mounted': 'error',
+      'react/no-render-return-value': 'error',
+      'react/no-string-refs': 'error',
+      'react/no-unescaped-entities': 'error',
+      'react/no-unknown-property': 'error',
+      'react-hooks/rules-of-hooks': 'error',
+      'react-hooks/exhaustive-deps': [
+        'warn',
+        {
+          additionalHooks: 'useSafeEffect',
+        },
+      ],
+
+      'typescript/explicit-module-boundary-types': 'off',
+      'typescript/no-explicit-any': 'off',
+      'typescript/no-var-requires': 'off',
+      'typescript/ban-ts-comment': 'off',
+      'typescript/no-duplicate-enum-values': 'error',
+      'typescript/no-empty-object-type': 'error',
+      'typescript/no-extra-non-null-assertion': 'error',
+      'typescript/no-misused-new': 'error',
+      'typescript/no-namespace': 'error',
+      'typescript/no-non-null-asserted-optional-chain': 'error',
+      'typescript/no-require-imports': 'error',
+      'typescript/no-this-alias': 'error',
+      'typescript/no-unnecessary-type-constraint': 'error',
+      'typescript/no-unsafe-declaration-merging': 'error',
+      'typescript/no-unsafe-function-type': 'error',
+      'typescript/no-wrapper-object-types': 'error',
+      'typescript/prefer-as-const': 'error',
+      'typescript/prefer-namespace-keyword': 'error',
+      'typescript/triple-slash-reference': 'error',
+
+      'import/no-default-export': 'off',
+
+      'jsx-a11y/alt-text': 'error',
+      'jsx-a11y/anchor-has-content': 'error',
+      'jsx-a11y/anchor-is-valid': 'error',
+      'jsx-a11y/click-events-have-key-events': 'error',
+      'jsx-a11y/heading-has-content': 'error',
+      'jsx-a11y/html-has-lang': 'error',
+      'jsx-a11y/lang': 'error',
+      'jsx-a11y/no-autofocus': 'warn',
+      'jsx-a11y/no-redundant-roles': 'error',
+      'jsx-a11y/role-has-required-aria-props': 'error',
+      'jsx-a11y/role-supports-aria-props': 'error',
+
+      'nextjs/no-html-link-for-pages': 'error',
+      'nextjs/no-img-element': 'warn',
+      'nextjs/no-sync-scripts': 'error',
+
+      'promise/no-new-statics': 'error',
+      'promise/valid-params': 'error',
+    },
+    overrides: [
+      {
+        files: ['**/*.ts', '**/*.tsx', '**/*.mts', '**/*.cts'],
+        rules: {
+          'no-var': 'error',
+          'prefer-rest-params': 'error',
+          'prefer-spread': 'error',
+        },
+      },
+      {
+        files: ['**/*.test-d.{ts,tsx}'],
+        rules: {
+          'no-unused-expressions': 'off',
+        },
+      },
+      {
+        files: ['**/*.{md,mdx}'],
+        rules: {
+          'react/jsx-no-undef': 'off',
+          'no-empty-pattern': 'off',
+          'typescript/no-empty-object-type': 'off',
+        },
+      },
+    ],
+  })
+}
+
+export default createOxlintConfig()
