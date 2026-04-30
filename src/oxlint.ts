@@ -2,10 +2,9 @@
  * Oxlint plugin for devup
  * Exports the same rules as ESLint plugin for oxlint JS plugins
  *
- * Usage in .oxlintrc.json:
- * {
- *   "extends": ["eslint-plugin-devup/oxlintrc"]
- * }
+ * Usage in oxlint.config.ts:
+ * import devupConfig from 'eslint-plugin-devup/oxlint-config'
+ * export default devupConfig
  */
 
 // @ts-ignore - named export for rules
@@ -22,7 +21,9 @@ import simpleImportSortPlugin from 'eslint-plugin-simple-import-sort'
 // @ts-ignore
 import unusedImportsPlugin from 'eslint-plugin-unused-imports'
 
-import { appPage, component, componentInterface } from './rules'
+import { appPage } from './rules/app-page/index.ts'
+import { component } from './rules/component/index.ts'
+import { componentInterface } from './rules/component-interface/index.ts'
 
 /**
  * Wrap a rule to handle unsupported context properties in oxlint

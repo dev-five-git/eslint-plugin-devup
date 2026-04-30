@@ -5,10 +5,11 @@
   "main": "dist/index.cjs",
   "type": "module",
   "scripts": {
+    "sync:latest": "bun update --latest && bun install",
     "test": "bun test",
     "lint": "oxlint",
     "lint:fix": "oxlint --fix",
-    "build": "tsc && bun build --target node src/index.ts --production --outfile dist/index.cjs --format cjs --packages external && bun build --target node src/index.ts --production --outfile dist/index.mjs --format esm --packages external && bun build --target node src/oxlint.ts --production --outfile dist/oxlint.mjs --format esm --packages external && cp dist/index.d.ts dist/index.d.cts",
+    "build": "tsc && bun build --target node src/index.ts --production --outfile dist/index.cjs --format cjs --packages external && bun build --target node src/index.ts --production --outfile dist/index.mjs --format esm --packages external && bun build --target node src/oxlint.ts --production --outfile dist/oxlint.mjs --format esm --packages external && bun build --target node src/oxlint-config.ts --production --outfile dist/oxlint-config.mjs --format esm --packages external && cp dist/index.d.ts dist/index.d.cts",
     "prepare": "bun run husky"
   },
   "exports": {
@@ -26,12 +27,17 @@
       "import": "./dist/oxlint.mjs",
       "default": "./dist/oxlint.mjs"
     },
-    "./oxlintrc": "./oxlintrc.json"
+    "./oxlint-config": {
+      "import": {
+        "types": "./dist/oxlint-config.d.ts",
+        "default": "./dist/oxlint-config.mjs"
+      },
+      "default": "./dist/oxlint-config.mjs"
+    }
   },
   "types": "./dist/index.d.ts",
   "files": [
-    "dist",
-    "oxlintrc.json"
+    "dist"
   ],
   "keywords": [
     "eslint"
@@ -39,17 +45,17 @@
   "author": "devfive",
   "license": "ISC",
   "dependencies": {
-    "@devup-ui/eslint-plugin": ">=1.0",
+    "@devup-ui/eslint-plugin": ">=1.0.14",
     "@eslint/js": ">=10.0",
-    "@tanstack/eslint-plugin-query": ">=5",
+    "@tanstack/eslint-plugin-query": ">=5.100.6",
     "eslint": ">=10.2",
     "eslint-config-prettier": ">=10",
-    "eslint-plugin-mdx": ">=3",
-    "eslint-plugin-prettier": ">=5",
-    "eslint-plugin-react": ">=7",
+    "eslint-plugin-mdx": ">=3.7.0",
+    "eslint-plugin-prettier": ">=5.5.5",
+    "eslint-plugin-react": ">=7.37.5",
     "eslint-plugin-react-hooks": ">=7",
-    "eslint-plugin-simple-import-sort": ">=13",
-    "eslint-plugin-unused-imports": ">=4",
+    "eslint-plugin-simple-import-sort": ">=13.0.0",
+    "eslint-plugin-unused-imports": ">=4.4.1",
     "prettier": ">=3",
     "typescript-eslint": ">=8.59"
   },
