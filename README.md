@@ -38,6 +38,10 @@ import devupConfig from 'eslint-plugin-devup/oxlint-config'
 export default devupConfig
 ```
 
+Use the `eslint-plugin-devup/oxlint-config` export instead of importing a file path from `node_modules`. The package only publishes `dist`, and this export points to the built config while still generating rules dynamically from the installed plugin versions.
+
+`oxlint.config.ts` is loaded by Oxlint through Node.js, so CI should use the latest Node.js when running `oxlint`.
+
 If you need project-specific overrides, extend the config object.
 
 ```ts

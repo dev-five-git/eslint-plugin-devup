@@ -30,6 +30,15 @@ describe('oxlint config', () => {
 
   it('should publish the dynamic oxlint config entry point', () => {
     expect(packageJson.exports['./oxlint-config']).toBeDefined()
+    expect(packageJson.exports['./oxlint-config'].import.default).toBe(
+      './dist/oxlint-config.mjs',
+    )
+  })
+
+  it('should keep the local source-based oxlint config out of the package', () => {
+    expect(packageJson.files).toEqual(['dist'])
+    expect(packageJson.files).not.toContain('oxlint.config.ts')
+    expect(packageJson.files).not.toContain('src')
   })
 
   it('should configure exported devup rules that are not in known groups', () => {
