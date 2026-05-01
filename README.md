@@ -33,9 +33,7 @@ export default configs.recommended;
 Create an `oxlint.config.ts` file in your project root.
 
 ```ts
-import devupConfig from 'eslint-plugin-devup/oxlint-config'
-
-export default devupConfig
+export { default } from 'eslint-plugin-devup/oxlint-config'
 ```
 
 Use the `eslint-plugin-devup/oxlint-config` export instead of importing a file path from `node_modules`. The package only publishes `dist`, and this export points to the built config while still generating rules dynamically from the installed plugin versions.
