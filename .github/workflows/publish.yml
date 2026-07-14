@@ -16,14 +16,20 @@ jobs:
       pull-requests: write
 
       # Actions > General > Workflow permissions for creating pull request
-      # Create brench to create pull request
+      # Create branch to create pull request
       contents: write
+
+      # Required for npm OIDC Trusted Publishing
+      id-token: write
     steps:
       - name: Checkout
         uses: actions/checkout@v7
       - uses: actions/setup-node@v6
         with:
           node-version: latest
+          registry-url: "https://registry.npmjs.org"
+      - name: Ensure npm >= 11.5.1 (OIDC Trusted Publishing)
+        run: npm install -g npm@latest
       - uses: oven-sh/setup-bun@v2
       - run: bun i
       - run: |
@@ -36,4 +42,3 @@ jobs:
           publish: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_CONFIG_TOKEN: ${{ secrets.NPM_TOKEN }}
