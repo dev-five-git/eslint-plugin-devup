@@ -2,6 +2,11 @@
   "ignore": [],
   "baseBranch": "main",
   "latestPackage": "package.json",
-  "publish": {},
+  "publish": {
+    "node": "npm publish"
+  },
+  "publishDryRun": {
+    "node": "npm publish --dry-run"
+  },
   "updateOn": {}
 }
