@@ -1,11 +1,12 @@
 import devupUiEslintPlugin from '@devup-ui/eslint-plugin'
 import js from '@eslint/js'
+import eslintReact from '@eslint-react/eslint-plugin'
+import stylistic from '@stylistic/eslint-plugin'
 import pluginQuery from '@tanstack/eslint-plugin-query'
 import type { Linter } from 'eslint'
 import * as mdx from 'eslint-plugin-mdx'
+import perfectionist from 'eslint-plugin-perfectionist'
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
-// @ts-ignore
-import react from 'eslint-plugin-react'
 // @ts-ignore
 import hooksPlugin from 'eslint-plugin-react-hooks'
 import simpleImportSort from 'eslint-plugin-simple-import-sort'
@@ -35,22 +36,22 @@ export default [
     ],
   },
   ...devupUiEslintPlugin.configs.recommended,
-  react.configs.flat!.recommended,
+  // eslint-plugin-react does not support ESLint 10 - its peer range stops at
+  // ^9.7.0 and its rules call APIs ESLint 10 removed (`context.getFilename()`,
+  // `SourceCode#isSpaceBetweenTokens()`). @eslint-react covers the correctness
+  // rules, @stylistic and perfectionist cover the JSX formatting rules.
+  eslintReact.configs['recommended-typescript'],
   js.configs.recommended,
   eslintPluginPrettierRecommended,
   ...tseslint.configs.recommended,
   ...pluginQuery.configs['flat/recommended'],
   {
-    settings: {
-      react: {
-        version: 'detect',
-        defaultVersion: '19',
-      },
-    },
     plugins: {
       'react-hooks': hooksPlugin,
       'unused-imports': unusedImports,
       'simple-import-sort': simpleImportSort,
+      '@stylistic': stylistic,
+      perfectionist,
       '@devup': {
         rules: {
           component,
@@ -60,7 +61,6 @@ export default [
       },
     },
     rules: {
-      'react/react-in-jsx-scope': 'off',
       'require-jsdoc': 'off',
       'valid-jsdoc': 'off',
       'prettier/prettier': [
@@ -78,19 +78,20 @@ export default [
       '@typescript-eslint/no-var-requires': 'off',
       '@typescript-eslint/ban-ts-comment': 'off',
       'no-constant-condition': ['error', { checkLoops: false }],
-      'react/jsx-curly-brace-presence': 'error',
+      '@stylistic/jsx-curly-brace-presence': 'error',
       camelcase: 'off',
       'simple-import-sort/imports': 'error',
       'simple-import-sort/exports': 'error',
-      'react/jsx-sort-props': [
+      'perfectionist/sort-jsx-props': [
         'error',
         {
-          callbacksLast: false,
-          shorthandFirst: false,
-          shorthandLast: false,
+          type: 'alphabetical',
+          order: 'asc',
           ignoreCase: false,
-          noSortAlphabetically: false,
-          reservedFirst: true,
+          groups: ['reserved', 'unknown'],
+          customGroups: [
+            { groupName: 'reserved', elementNamePattern: '^(key|ref)$' },
+          ],
         },
       ],
       '@typescript-eslint/no-unused-vars': [
@@ -105,11 +106,9 @@ export default [
           ignoreRestSiblings: true,
         },
       ],
-      'react/sort-default-props': 'error',
       'unused-imports/no-unused-imports': 'error',
       'unused-imports/no-unused-vars': 'off',
       'comma-dangle': 'off',
-      'react/prop-types': 'off',
       'no-console': [
         'error',
         {
@@ -161,8 +160,7 @@ export default [
     files: ['**/*.{md,mdx}/*.{js,jsx,ts,tsx}'],
     rules: {
       ...mdx.flatCodeBlocks.rules,
-      'react/jsx-no-undef': 'off',
-      'react/jsx-tag-spacing': ['error', { beforeClosing: 'never' }],
+      '@stylistic/jsx-tag-spacing': ['error', { beforeClosing: 'never' }],
       'no-empty-pattern': 'off',
       '@typescript-eslint/no-empty-object-type': 'off',
     },
