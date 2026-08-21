@@ -13,9 +13,8 @@ import { rules as devupUiRules } from '@devup-ui/eslint-plugin'
 import tanstackQueryPlugin from '@tanstack/eslint-plugin-query'
 import type { Rule } from 'eslint'
 import { rules as mdxRules } from 'eslint-plugin-mdx'
+import perfectionistPlugin from 'eslint-plugin-perfectionist'
 import eslintPluginPrettier from 'eslint-plugin-prettier'
-// @ts-ignore
-import reactPlugin from 'eslint-plugin-react'
 // @ts-ignore
 import simpleImportSortPlugin from 'eslint-plugin-simple-import-sort'
 // @ts-ignore
@@ -98,13 +97,13 @@ const plugin = {
     // @tanstack/eslint-plugin-query rules (auto-wrapped for oxlint compatibility)
     ...buildWrappedRules(tanstackQueryPlugin.rules!, 'query'),
 
-    // eslint-plugin-react rules not natively supported by oxlint
-    'react/prop-types': wrapRuleForOxlint(reactPlugin.rules!['prop-types']),
-    'react/jsx-sort-props': wrapRuleForOxlint(
-      reactPlugin.rules!['jsx-sort-props'],
-    ),
-    'react/sort-default-props': wrapRuleForOxlint(
-      reactPlugin.rules!['sort-default-props'],
+    // JSX prop sorting is not natively supported by oxlint.
+    // Sourced from eslint-plugin-perfectionist because eslint-plugin-react
+    // does not support ESLint 10.
+    'perfectionist/sort-jsx-props': wrapRuleForOxlint(
+      perfectionistPlugin.rules![
+        'sort-jsx-props'
+      ] as unknown as Rule.RuleModule,
     ),
   },
 }

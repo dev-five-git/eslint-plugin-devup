@@ -17,19 +17,17 @@ const prettierOptions = {
 }
 
 const jsxSortPropsOptions = {
-  callbacksLast: false,
-  shorthandFirst: false,
-  shorthandLast: false,
+  type: 'alphabetical',
+  order: 'asc',
   ignoreCase: false,
-  noSortAlphabetically: false,
-  reservedFirst: true,
+  groups: ['reserved', 'unknown'],
+  customGroups: [{ groupName: 'reserved', elementNamePattern: '^(key|ref)$' }],
 }
 
 const devupRuleOverrides: Record<string, RuleConfig> = {
   prettier: ['error', prettierOptions],
   'unused-imports/no-unused-vars': 'off',
-  'react/prop-types': 'off',
-  'react/jsx-sort-props': ['error', jsxSortPropsOptions],
+  'perfectionist/sort-jsx-props': ['error', jsxSortPropsOptions],
 }
 
 const devupRuleGroups = [
@@ -40,7 +38,7 @@ const devupRuleGroups = [
   'simple-import-sort/',
   'unused-imports/',
   'query/',
-  'react/',
+  'perfectionist/',
 ] as const
 
 function getRuleConfig(ruleName: string): RuleConfig {
